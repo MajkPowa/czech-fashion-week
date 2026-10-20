@@ -273,6 +273,14 @@ def video_export(row):
                         '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an', '-threads', '2', str(short_tmp)])
             short_tmp.replace(short)
         item['heroSrc'] = f'media/{short.name}'
+        desktop = OUTPUT / f'{video_id}-hero-hd.mp4'
+        if not desktop.exists() or abs(video_duration(desktop) - 9) > .3:
+            desktop_tmp = desktop.with_suffix('.part.mp4')
+            ffmpeg_run(['-ss', '2', '-i', str(original), '-t', '9', '-vf', 'scale=1080:1920',
+                        '-c:v', 'libx264', '-preset', 'fast', '-crf', '23', '-maxrate', '2500k', '-bufsize', '5000k',
+                        '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an', '-threads', '2', str(desktop_tmp)])
+            desktop_tmp.replace(desktop)
+        item['heroDesktopSrc'] = f'media/{desktop.name}'
     audit = dict(id=video_id, relativeSourcePath=path, sha256=sha,
                  sourceWidth=row['width'], sourceHeight=row['height'],
                  exportBytes=target.stat().st_size + poster.stat().st_size,
@@ -306,7 +314,7 @@ def verify_exports():
     media = json.loads((DATA / 'media.json').read_text(encoding='utf-8'))
     if len({item['id'] for item in media}) != len(media):
         raise ValueError('Duplicate public media ID')
-    references = {item[key] for item in media for key in ('src', 'thumb', 'poster', 'heroSrc') if key in item}
+    references = {item[key] for item in media for key in ('src', 'thumb', 'poster', 'heroSrc', 'heroDesktopSrc') if key in item}
     for reference in references:
         resolved = (ROOT / 'public' / reference).resolve()
         resolved.relative_to(OUTPUT.resolve())

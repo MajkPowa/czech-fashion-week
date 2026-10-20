@@ -104,7 +104,8 @@
     "originalFilename": "iveta.MOV",
     "sourceYearEvidence": "source-folder-context",
     "role": "hero-video",
-    "heroSrc": "media/v-be76db48227a18-hero.mp4"
+    "heroSrc": "media/v-be76db48227a18-hero.mp4",
+    "heroDesktopSrc": "media/v-be76db48227a18-hero-hd.mp4"
   },
   {
     "id": "p-0ad36731a9cd68",

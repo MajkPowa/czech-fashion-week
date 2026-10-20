@@ -15,15 +15,17 @@ const laffita = media.find(m => m.year === 2022 && m.collection?.toLowerCase().i
 const hanak = collectionMedia(['Luděk Hanák']).find(m => m.year === 2024 && m.type === 'photo');
 const backstage = media.find(m => m.year === 2020 && m.tags?.includes('backstage') && m.type === 'photo') || media.find(m => m.year === 2020 && m.type === 'photo') || hero;
 const runwayVideo = media.find(m => m.type === 'video' && m.year === 2024 && m.originalFilename.toLowerCase() === 'iveta.mov' && m.collection?.toLowerCase().includes('klett')) || media.find(m => m.type === 'video' && m.year === 2024);
+const heroVideo = media.find(m => m.type === 'video' && m.heroSrc);
 const archiveImages = [klett, menswear, hero].filter(Boolean);
 ---
 <Layout title="Czech Fashion Week" description="Móda. Naživo. Objevte Czech Fashion Week, CFW Glamour Praha 20. listopadu 2026 a fotografický archiv českých přehlídek.">
   <section class="home-hero" aria-labelledby="hero-title">
     {hero && <picture><source media="(max-width: 760px)" srcset={url(mobileHero!.src)} /><img class="home-hero-image" src={url(hero.src)} alt={hero.alt} width={hero.width} height={hero.height} fetchpriority="high" loading="eager" /></picture>}
+    {heroVideo?.heroSrc && <video class="home-hero-video" id="hero-film" data-video-autoplay muted loop playsinline preload="metadata" width="1080" height="1920" aria-hidden="true" tabindex="-1" disablepictureinpicture>{heroVideo.heroDesktopSrc && <source media="(min-width: 761px)" src={url(heroVideo.heroDesktopSrc)} type="video/mp4" />}<source src={url(heroVideo.heroSrc)} type="video/mp4" /></video>}
     <div class="container hero-content">
       <div class="hero-top"><p class="eyebrow">Czech Fashion Week</p><p class="hero-edition">ČESKÁ MÓDA<br />V ŽIVÉM OBRAZE</p></div>
       <div><h1 class="hero-headline" id="hero-title">Móda.<span>Naživo.</span></h1><div class="hero-actions"><a class="button" href={url('program/praha-glamour-2026/')}>Objevte CFW Glamour <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a><a class="text-link" href={url('archiv/')}>Vstoupit do archivu <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></div>
-      <div class="hero-bottom"><p class="hero-photo-credit">Z ARCHIVU CFW · BRNO 2024<br />Kolekce Jitka Klett</p><a class="scroll-cue" href="#pribeh">Příběh pokračuje <span aria-hidden="true"><Icon name="arrow-down" /></span></a></div>
+      <div class="hero-bottom"><p class="hero-photo-credit">Z ARCHIVU CFW · BRNO 2024<br />Kolekce Jitka Klett</p><div class="hero-bottom-actions">{heroVideo?.heroSrc && <button class="hero-video-toggle" type="button" data-video-toggle="hero-film" aria-controls="hero-film" aria-pressed="false"><span aria-hidden="true"><Icon name="play" /><Icon name="pause" /></span><span data-video-label>Přehrát film</span></button>}<a class="scroll-cue" href="#pribeh">Příběh pokračuje <span aria-hidden="true"><Icon name="arrow-down" /></span></a></div></div>
     </div>
   </section>
   <aside class="event-ribbon" aria-label="Nejbližší událost"><div class="container event-ribbon-inner"><div class="ribbon-date"><strong>20.11.</strong><span>2026<br />Pátek · 20:00</span></div><div class="ribbon-title"><strong>CFW Glamour · Praha</strong><p>PVA EXPO Praha, Letňany / Cocktail Chic</p></div><a class="text-link ribbon-link" href={url('program/praha-glamour-2026/')}>Program a vstupenky <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></aside>
