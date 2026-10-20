@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+export function getStaticPaths() { return [2020, 2021, 2022, 2023, 2024].map((year) => ({ params: { year: String(year) }, props: { year } })); }
+const { year } = Astro.props;
+const stories: Record<number, string> = {
+  2020: 'Skleněné atrium, bílá dráha a intimní okamžiky v zákulisí. Pohled do historie Czech Fashion Week.',
+  2021: 'Setkání módy a publika. Světlo, siluety a kolekce zachycené v Teplicích.',
+  2022: 'Barvy, textury a rozmanité autorské přístupy. Ročník ve znamení jednotlivých kolekcí.',
+  2023: 'Od teplické runway k letní atmosféře Karlových Varů. Každé místo přináší jinou náladu.',
+  2024: 'Dramatické světlo a živý pohyb látky. Fotografie a vertikální filmy z brněnské přehlídky.',
+};
+---
+<Layout title={`Archiv ${year}`} description={`Czech Fashion Week ${year}. ${stories[year]}`} active="archiv">
+  <div class="archive-page">
+    <header class="archive-intro container">
+      <div><p class="eyebrow">04 / ARCHIV CZECH FASHION WEEK</p><h1>Ročník<br /><em>{year}.</em></h1></div>
+      <div class="archive-intro-aside"><span class="archive-date-range">VZPOMÍNKY V OBRAZE</span><p>{stories[year]}</p><p class="archive-intro-note">Historický výběr. Účast a místa se vztahují k tomuto ročníku.</p></div>
+    </header>
+    <div class="container"><Gallery initialYear={year} /></div>
+  </div>
+</Layout>

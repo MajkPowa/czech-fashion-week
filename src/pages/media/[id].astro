@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import mediaData from '../../data/media.json';
+import { url } from '../../lib/paths';
+import '../../styles/gallery.css';
+
+export function getStaticPaths() {
+  return mediaData.map((item) => ({ params: { id: item.id }, props: { item } }));
+}
+const { item } = Astro.props;
+const sameYear = mediaData.filter((entry) => entry.year === item.year);
+const position = sameYear.findIndex((entry) => entry.id === item.id);
+const previous = sameYear[(position - 1 + sameYear.length) % sameYear.length];
+const next = sameYear[(position + 1) % sameYear.length];
+const minutes = item.duration ? `${Math.floor(item.duration / 60)}:${String(Math.floor(item.duration % 60)).padStart(2, '0')}` : null;
+---
+<Layout title={`${item.title} — ${item.year}`} description={`${item.city}, Czech Fashion Week ${item.year}. ${item.collection || ''} ${item.type === 'video' ? 'Film' : 'Fotografie'} z archivu.`} active="archiv" dark>
+  <div class="media-detail container" data-media-page>
+    <div class="media-detail-top"><a href={url(`archiv/${item.year}/`)} class="text-link" data-archive-return>Zpět do archivu <span aria-hidden="true">↖</span></a><span>{item.year} / {item.city}</span></div>
+    <figure class="media-detail-figure">
+      {item.type === 'video' ? <video controls playsinline preload="metadata" poster={url(item.poster || item.thumb)} width={item.width} height={item.height} aria-label={item.alt || item.title}><source src={url(item.src)} type="video/mp4" /><p>Prohlížeč nepodporuje přehrávání videa. <a href={url(item.src)}>Otevřít video</a></p></video> : <img src={url(item.src)} width={item.width} height={item.height} alt={item.alt || item.title} fetchpriority="high" decoding="async" />}
+    </figure>
+    <div class="media-detail-caption"><div><p class="eyebrow">{item.type === 'video' ? `FILM${minutes ? ` / ${minutes}` : ''}` : 'FOTOGRAFIE'} / {item.year}</p><h1>{item.collection || item.title}</h1><p>{item.title}</p></div><div class="media-detail-credits"><p>{item.city}</p><p>{item.credit || 'Archiv Czech Fashion Week'}</p>{item.photographer && <p>Autor: {item.photographer}</p>}<p>Historický záznam Czech Fashion Week.</p></div></div>
+    <nav class="media-detail-navigation" aria-label="Další média stejného ročníku"><a href={url(`media/${previous.id}/`)}><span aria-hidden="true">←</span> Předchozí médium</a><a href={url(`archiv/${item.year}/`)}>Celý ročník {item.year}</a><a href={url(`media/${next.id}/`)}>Další médium <span aria-hidden="true">→</span></a></nav>
+  </div>
+</Layout>
+
+<script>
+  const returnLink = document.querySelector<HTMLAnchorElement>('[data-archive-return]');
+  try {
+    const context = JSON.parse(sessionStorage.getItem('cfw:archive-return') || 'null');
+    if (returnLink && context?.url && Date.now() - context.savedAt < 86400000) {
+      const target = new URL(context.url, location.origin);
+      const fallback = new URL(returnLink.href);
+      const archiveRoot = fallback.pathname.replace(/\d{4}\/$/, '');
+      if (target.origin === location.origin && target.pathname.startsWith(archiveRoot)) returnLink.href = target.href;
+    }
+  } catch { /* The standard year link remains available without storage. */ }
+</script>

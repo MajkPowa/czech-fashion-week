@@ -1,0 +1,93 @@
+---
+import mediaData from '../data/media.json';
+import { url } from '../lib/paths';
+import '../styles/gallery.css';
+
+interface Props { initialYear?: number }
+const { initialYear } = Astro.props;
+const media = mediaData as Array<{
+  id: string; type: string; year: number; city: string; collection?: string | null;
+  title: string; alt: string; width: number; height: number; thumb: string; src: string;
+  poster?: string; duration?: number; credit?: string; photographer?: string;
+}>;
+const years = [...new Set(media.map((item) => item.year))].sort((a, b) => b - a);
+const cities = [...new Set(media.map((item) => item.city).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'cs'));
+const collections = [...new Set(media.map((item) => item.collection).filter(Boolean))] as string[];
+collections.sort((a, b) => a.localeCompare(b, 'cs'));
+const initialCount = media.filter((item) => !initialYear || item.year === initialYear).length;
+const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, '0')}` : '';
+---
+
+<section class="archive-gallery" data-gallery data-initial-year={initialYear ?? ''} data-archive-url={url('archiv/')} data-base-url={url('')} aria-label="Fotografie a filmy Czech Fashion Week">
+  <nav class="archive-years" aria-label="Ročník archivu">
+    <a href={url('archiv/')} data-year-link="" aria-current={!initialYear ? 'page' : undefined}><span>Výběr</span>Všechny</a>
+    {years.map((year) => <a href={url(`archiv/${year}/`)} data-year-link={year} aria-current={year === initialYear ? 'page' : undefined}><span>Ročník</span>{year}</a>)}
+  </nav>
+
+  <form class="archive-form" action={url('archiv/')} method="get" data-gallery-form>
+    <label class="archive-field">Rok
+      <select name="year" aria-label="Rok"><option value="">Všechny roky</option>{years.map((year) => <option value={year} selected={year === initialYear}>{year}</option>)}</select>
+    </label>
+    <label class="archive-field">Místo
+      <select name="city" aria-label="Místo"><option value="">Všechna místa</option>{cities.map((city) => <option value={city}>{city}</option>)}</select>
+    </label>
+    <label class="archive-field">Médium
+      <select name="type" aria-label="Druh média"><option value="">Foto i film</option><option value="photo">Fotografie</option><option value="video">Filmy</option></select>
+    </label>
+    <label class="archive-field archive-field--collection">Kolekce / album
+      <select name="collection" aria-label="Kolekce nebo album"><option value="">Všechny kolekce</option>{collections.map((collection) => <option value={collection}>{collection}</option>)}</select>
+    </label>
+    <label class="archive-field archive-field--search">Hledat v archivu
+      <input type="search" name="q" placeholder="Místo, kolekce, ročník…" autocomplete="off" />
+    </label>
+    <noscript><button type="submit" class="button button--dark">Otevřít výběr</button><p>Pro interaktivní filtry zapněte JavaScript. Ročníky lze procházet i odkazy výše a všechna média mají vlastní stránku.</p></noscript>
+  </form>
+
+  <div class="archive-result-bar">
+    <p data-gallery-count aria-live="polite" aria-atomic="true">{initialCount} záznamů v kurátorském výběru</p>
+    <button type="button" class="archive-reset" data-reset hidden>Zrušit filtry <span aria-hidden="true">↗</span></button>
+  </div>
+
+  <div class="archive-grid" data-gallery-grid>
+    {media.map((item, index) => <article class:list={['media-card', { 'media-card--wide': item.width / item.height > 1.3 }]} id={`media-${item.id}`} data-media-card={item.id} hidden={!!initialYear && item.year !== initialYear}>
+      <a class="media-card-link" href={url(`media/${item.id}/`)} data-open-media={item.id} aria-label={`${item.type === 'video' ? 'Přehrát film' : 'Otevřít fotografii'}: ${item.title}, ${item.year}`}>
+        <div class="media-card-image">
+          <img src={url(item.thumb)} alt={item.alt || item.title} width={item.width} height={item.height} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
+          <span class="media-card-fallback" hidden data-image-fallback>Obraz se nepodařilo načíst.<br />Otevřít detail <span aria-hidden="true">↗</span></span>
+          {item.type === 'video' && <span class="media-card-film"><span aria-hidden="true">▶</span> Film {time(item.duration)}</span>}
+          <span class="media-card-open" aria-hidden="true">↗</span>
+        </div>
+        <div class="media-card-caption"><span>{item.year} / {item.city}</span><span>{item.collection || (item.type === 'video' ? 'Film z přehlídky' : 'Czech Fashion Week')}</span></div>
+      </a>
+    </article>)}
+  </div>
+
+  <div class="archive-empty" data-gallery-empty hidden>
+    <span class="eyebrow">V tomto výběru je zatím ticho</span>
+    <h2>Začněte jiným pohledem.</h2>
+    <p>Pro tuto kombinaci filtrů jsme nenašli žádná média. Zkuste jiný ročník, místo nebo kolekci.</p>
+    <button type="button" class="button button--dark" data-reset>Zobrazit celý archiv <span aria-hidden="true">↗</span></button>
+  </div>
+
+  <div class="archive-pagination" data-gallery-pagination hidden>
+    <p data-gallery-progress></p>
+    <button class="button button--dark" type="button" data-load-more>Načíst další <span aria-hidden="true">↓</span></button>
+  </div>
+
+  <dialog class="media-dialog" data-media-dialog aria-labelledby="cfw-media-title" aria-describedby="cfw-media-credit">
+    <div class="media-dialog-shell">
+      <header class="media-dialog-top"><p data-dialog-location>Archiv Czech Fashion Week</p><button type="button" data-dialog-close aria-label="Zavřít detail média">Zavřít <span aria-hidden="true">×</span></button></header>
+      <div class="media-dialog-stage">
+        <button class="media-dialog-arrow media-dialog-arrow--previous" type="button" data-dialog-previous aria-label="Předchozí médium"><span aria-hidden="true">←</span></button>
+        <figure class="media-dialog-figure" data-dialog-body></figure>
+        <button class="media-dialog-arrow media-dialog-arrow--next" type="button" data-dialog-next aria-label="Další médium"><span aria-hidden="true">→</span></button>
+      </div>
+      <footer class="media-dialog-caption"><div><p id="cfw-media-title" data-dialog-title></p><p id="cfw-media-credit" data-dialog-credit></p></div><div class="media-dialog-meta"><span data-dialog-count aria-live="polite"></span><a href={url('archiv/')} data-dialog-detail>Samostatný detail <span aria-hidden="true">↗</span></a></div></footer>
+    </div>
+  </dialog>
+  <script type="application/json" data-gallery-data set:html={JSON.stringify(media).replace(/</g, '\\u003c')} />
+</section>
+
+<script>
+  import '../scripts/gallery';
+</script>

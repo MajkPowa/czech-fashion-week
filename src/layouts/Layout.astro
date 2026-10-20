@@ -1,0 +1,68 @@
+---
+import '@fontsource-variable/open-sans';
+import '@fontsource-variable/montserrat';
+import '../styles/global.css';
+import { url } from '../lib/paths';
+interface Props { title: string; description?: string; active?: string; dark?: boolean; }
+const { title, description = 'Česká móda v živém obraze. Přehlídky, návrháři a příběhy Czech Fashion Week.', active = '', dark = false } = Astro.props;
+const navigation = [ ['program','Program'], ['navrhari','Návrháři'], ['archiv','Archiv'], ['o-cfw','O CFW'], ['partnerstvi','Partnerství'] ];
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
+---
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <title>{title === 'Czech Fashion Week' ? title : `${title} — Czech Fashion Week`}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Kolekce Jitka Klett na Czech Fashion Week Brno 2024" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <slot name="head" />
+  </head>
+  <body class:list={[dark && 'page-dark']}>
+    <a class="skip-link" href="#main">Přejít na obsah</a>
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <a class="brand-logo" href={url()} aria-label="Czech Fashion Week — úvod"><img src={url('cfw-logo.png')} alt="Czech Fashion Week" width="200" height="116" /></a>
+        <nav class="desktop-nav" aria-label="Hlavní navigace">
+          {navigation.map(([path,label]) => <a href={url(`${path}/`)} aria-current={active === path ? 'page' : undefined}>{label}</a>)}
+        </nav>
+        <div class="header-actions">
+          <a class="header-contact" href={url('kontakt/')}>Kontakt <span aria-hidden="true">↗</span></a>
+          <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu"><span>Menu</span><i aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobilní navigace" hidden>
+        {navigation.map(([path,label],index) => <a href={url(`${path}/`)} aria-current={active === path ? 'page' : undefined}><small>0{index+1}</small>{label}<span aria-hidden="true">↗</span></a>)}
+        <a href={url('kontakt/')}><small>06</small>Kontakt<span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <p class="eyebrow">Další kapitola začíná setkáním.</p>
+        <a class="footer-invitation" href={url('kontakt/')}>Buďte součástí.<span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="container footer-grid">
+        <a class="brand-logo brand-logo--footer" href={url()} aria-label="Czech Fashion Week"><img src={url('cfw-logo.png')} alt="Czech Fashion Week" width="200" height="116" loading="lazy" /></a>
+        <div><p class="footer-label">Objevujte</p><a href={url('program/')}>Program</a><a href={url('navrhari/')}>Návrháři</a><a href={url('archiv/')}>Archiv ročníků</a></div>
+        <div><p class="footer-label">Spojme se</p><a href={url('partnerstvi/')}>Partnerství</a><a href={url('o-cfw/#moda-a-pomoc')}>Móda a pomoc</a><a href={url('kontakt/')}>Produkce a média</a></div>
+        <div class="footer-email"><p class="footer-label">Czech Fashion Week</p><a href="mailto:produkce@czechfashionweek.eu">produkce@czechfashionweek.eu <span aria-hidden="true">↗</span></a><p>Česká móda. Výjimečná místa.<br />Skutečná setkání.</p></div>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Czech Fashion Week</span><a href={url('o-webu/')}>O webu a fotografiích</a><a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">Oficiální informace CFW ↗</a><a href="#main">Zpět nahoru ↑</a></div>
+    </footer>
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>
