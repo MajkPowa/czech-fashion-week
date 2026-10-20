@@ -26,27 +26,27 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
   </nav>
 
   <form class="archive-form" action={url('archiv/')} method="get" data-gallery-form>
-    <label class="archive-field">Rok
-      <select name="year" aria-label="Rok"><option value="">Všechny roky</option>{years.map((year) => <option value={year} selected={year === initialYear}>{year}</option>)}</select>
+    <label class="archive-field"><span class="field-label"><Icon name="calendar" />Rok</span>
+      <span class="icon-select"><select name="year" aria-label="Rok"><option value="">Všechny roky</option>{years.map((year) => <option value={year} selected={year === initialYear}>{year}</option>)}</select><Icon name="chevron-down" /><Icon name="chevron-up" /></span>
     </label>
-    <label class="archive-field">Místo
-      <select name="city" aria-label="Místo"><option value="">Všechna místa</option>{cities.map((city) => <option value={city}>{city}</option>)}</select>
+    <label class="archive-field"><span class="field-label"><Icon name="location" />Místo</span>
+      <span class="icon-select"><select name="city" aria-label="Místo"><option value="">Všechna místa</option>{cities.map((city) => <option value={city}>{city}</option>)}</select><Icon name="chevron-down" /><Icon name="chevron-up" /></span>
     </label>
-    <label class="archive-field">Médium
-      <select name="type" aria-label="Druh média"><option value="">Foto i film</option><option value="photo">Fotografie</option><option value="video">Filmy</option></select>
+    <label class="archive-field"><span class="field-label"><Icon name="film" />Médium</span>
+      <span class="icon-select"><select name="type" aria-label="Druh média"><option value="">Foto i film</option><option value="photo">Fotografie</option><option value="video">Filmy</option></select><Icon name="chevron-down" /><Icon name="chevron-up" /></span>
     </label>
-    <label class="archive-field archive-field--collection">Kolekce / album
-      <select name="collection" aria-label="Kolekce nebo album"><option value="">Všechny kolekce</option>{collections.map((collection) => <option value={collection}>{collection}</option>)}</select>
+    <label class="archive-field archive-field--collection"><span class="field-label"><Icon name="collection" />Kolekce / album</span>
+      <span class="icon-select"><select name="collection" aria-label="Kolekce nebo album"><option value="">Všechny kolekce</option>{collections.map((collection) => <option value={collection}>{collection}</option>)}</select><Icon name="chevron-down" /><Icon name="chevron-up" /></span>
     </label>
-    <label class="archive-field archive-field--search">Hledat v archivu
+    <label class="archive-field archive-field--search"><span class="field-label"><Icon name="search" />Hledat v archivu</span>
       <input type="search" name="q" placeholder="Místo, kolekce, ročník…" autocomplete="off" />
     </label>
     <noscript><button type="submit" class="button button--dark">Otevřít výběr</button><p>Pro interaktivní filtry zapněte JavaScript. Ročníky lze procházet i odkazy výše a všechna média mají vlastní stránku.</p></noscript>
   </form>
 
   <div class="archive-result-bar">
-    <p data-gallery-count aria-live="polite" aria-atomic="true">{initialCount} záznamů v kurátorském výběru</p>
-    <button type="button" class="archive-reset" data-reset hidden>Zrušit filtry <span aria-hidden="true"><Icon name="arrow-up-right" /></span></button>
+    <p class="icon-label"><Icon name="filter" /><span data-gallery-count aria-live="polite" aria-atomic="true">{initialCount} záznamů v kurátorském výběru</span></p>
+    <button type="button" class="archive-reset" data-reset hidden>Zrušit filtry <span aria-hidden="true"><Icon name="reset" /></span></button>
   </div>
 
   <div class="archive-grid" data-gallery-grid>
@@ -56,7 +56,7 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
           <img src={url(item.thumb)} alt={item.alt || item.title} width={item.width} height={item.height} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
           <span class="media-card-fallback" hidden data-image-fallback>Obraz se nepodařilo načíst.<br />Otevřít detail <span aria-hidden="true"><Icon name="arrow-up-right" /></span></span>
           {item.type === 'video' && <span class="media-card-film"><span aria-hidden="true"><Icon name="play" /></span> Film {time(item.duration)}</span>}
-          <span class="media-card-open" aria-hidden="true"><Icon name="arrow-up-right" /></span>
+          <span class="media-card-open" aria-hidden="true"><Icon name="expand" /></span>
         </div>
         <div class="media-card-caption"><span>{item.year} / {item.city}</span><span>{item.collection || (item.type === 'video' ? 'Film z přehlídky' : 'Czech Fashion Week')}</span></div>
       </a>
@@ -67,7 +67,7 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
     <span class="eyebrow">V tomto výběru je zatím ticho</span>
     <h2>Začněte jiným pohledem.</h2>
     <p>Pro tuto kombinaci filtrů jsme nenašli žádná média. Zkuste jiný ročník, místo nebo kolekci.</p>
-    <button type="button" class="button button--dark" data-reset>Zobrazit celý archiv <span aria-hidden="true"><Icon name="arrow-up-right" /></span></button>
+    <button type="button" class="button button--dark" data-reset>Zobrazit celý archiv <span aria-hidden="true"><Icon name="reset" /></span></button>
   </div>
 
   <div class="archive-pagination" data-gallery-pagination hidden>
@@ -77,7 +77,7 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
 
   <dialog class="media-dialog" data-media-dialog aria-labelledby="cfw-media-title" aria-describedby="cfw-media-credit">
     <div class="media-dialog-shell">
-      <header class="media-dialog-top"><p data-dialog-location>Archiv Czech Fashion Week</p><button type="button" data-dialog-close aria-label="Zavřít detail média">Zavřít <span aria-hidden="true"><Icon name="close" /></span></button></header>
+      <header class="media-dialog-top"><p class="icon-label"><Icon name="location" /><span data-dialog-location>Archiv Czech Fashion Week</span></p><button type="button" data-dialog-close aria-label="Zavřít detail média">Zavřít <span aria-hidden="true"><Icon name="close" /></span></button></header>
       <div class="media-dialog-stage">
         <button class="media-dialog-arrow media-dialog-arrow--previous" type="button" data-dialog-previous aria-label="Předchozí médium"><span aria-hidden="true"><Icon name="arrow-left" /></span></button>
         <figure class="media-dialog-figure" data-dialog-body></figure>

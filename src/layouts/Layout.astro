@@ -1,8 +1,6 @@
 ---
 import Icon from '../components/Icon.astro';
-import '@fontsource-variable/bodoni-moda/standard.css';
-import '@fontsource-variable/bodoni-moda/standard-italic.css';
-import '@fontsource-variable/manrope';
+import '@fontsource-variable/onest';
 import '../styles/global.css';
 import '../styles/typography.css';
 import { url } from '../lib/paths';
@@ -41,7 +39,7 @@ const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
           {navigation.map(([path,label]) => <a href={url(`${path}/`)} aria-current={active === path ? 'page' : undefined}>{label}</a>)}
         </nav>
         <div class="header-actions">
-          <a class="header-contact" href={url('kontakt/')}>Kontakt <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>
+          <a class="header-contact" href={url('kontakt/')}>Kontakt <span aria-hidden="true"><Icon name="mail" /></span></a>
           <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu"><span>Menu</span><span class="menu-toggle-icon" aria-hidden="true"><Icon name="menu" /><Icon name="close" /></span></button>
         </div>
       </div>
@@ -62,7 +60,7 @@ const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
         <div><p class="footer-label">Spojme se</p><a href={url('partnerstvi/')}>Partnerství</a><a href={url('o-cfw/#moda-a-pomoc')}>Móda a pomoc</a><a href={url('kontakt/')}>Produkce a média</a></div>
         <div class="footer-email"><p class="footer-label">Czech Fashion Week</p><a href="mailto:produkce@czechfashionweek.eu">produkce@czechfashionweek.eu <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a><p>Česká móda. Výjimečná místa.<br />Skutečná setkání.</p></div>
       </div>
-      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Czech Fashion Week</span><a href={url('o-webu/')}>O webu a fotografiích</a><a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">Oficiální informace CFW <Icon name="arrow-up-right" /></a><a href="#main">Zpět nahoru <Icon name="arrow-up" /></a></div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Czech Fashion Week</span><a href={url('o-webu/')}>O webu a fotografiích</a><a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">Oficiální informace CFW <Icon name="external" /></a><a href="#main">Zpět nahoru <Icon name="arrow-up" /></a></div>
     </footer>
     <script>
       import '../scripts/site';

@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { iconPaths, iconLabels, type IconName } from '../lib/iconography';
+import { url } from '../lib/paths';
+import '@fontsource-variable/geist';
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource-variable/bodoni-moda/standard.css';
+import '@fontsource-variable/manrope';
+import '../styles/design-system.css';
+
+const names = Object.keys(iconPaths) as IconName[];
+const families = [
+  { id: 'onest', name: 'Onest', display: 'Onest Variable', body: 'Onest Variable', note: 'Doporučený směr: čitelný grotesk pro titulky i běžný text. Jeden konzistentní hlas.' },
+  { id: 'geist', name: 'Geist', display: 'Geist Variable', body: 'Geist Variable', note: 'Silná alternativa pro rozhraní; úsporná, čistá a technicky působící kresba.' },
+  { id: 'jakarta', name: 'Plus Jakarta Sans', display: 'Plus Jakarta Sans Variable', body: 'Plus Jakarta Sans Variable', note: 'Výraznější geometrie. Širší kresba častěji zalamuje text na úzké obrazovce.' },
+  { id: 'previous', name: 'Původní Bodoni + Manrope', display: 'Bodoni Moda Variable', body: 'Manrope Variable', note: 'Původní směr pro srovnání. Kontrast silných a jemných tahů titulků nevyhověl požadavku na čitelnost.' },
+];
+---
+<Layout title="Typografie a ikonografie CFW" noIndex description="Srovnání typografie na českém textu a kompletní vlastní SVG ikonografie Czech Fashion Week.">
+  <div class="design-lab container">
+    <header class="lab-intro"><p class="eyebrow">CFW / Designový systém</p><h1>Čitelně.<br />V každém detailu.</h1><p>Nový směr sjednocuje titulky a běžný text písmem Onest. Porovnejte kandidáty na stejném českém textu a prohlédněte si celou sadu ikon.</p><a class="text-link" href={url()}>Zpět na web <Icon name="arrow-up-left" /></a></header>
+
+    <section class="lab-section" aria-labelledby="type-title">
+      <div class="lab-section-heading"><p class="eyebrow">01 / Typografie</p><h2 id="type-title">Rozhoduje skutečný text.</h2></div>
+      <div class="lab-controls">
+        <label>Písmo<select id="lab-font">{families.map(family => <option value={family.id}>{family.name}</option>)}</select></label>
+        <label>Šířka ukázky<select id="lab-width"><option value="fluid">Celá dostupná šířka</option><option value="390">390 px / mobil</option><option value="320">320 px / malý mobil</option></select></label>
+        <label>Velikost textu <output id="lab-size-value">18 px</output><input id="lab-size" type="range" min="16" max="20" value="18" aria-label="Velikost běžného textu" /></label>
+        <label>Řez titulků<select id="lab-weight"><option value="400">Regular 400</option><option value="500" selected>Medium 500</option><option value="600">Semibold 600</option></select></label>
+        <button class="button button--dark" id="lab-theme" type="button" aria-pressed="false">Tmavý podklad <Icon name="contrast" /></button>
+      </div>
+      <p class="lab-font-note" id="lab-font-note" aria-live="polite">{families[0].note}</p>
+      <label class="lab-copy-label">Vlastní český text<textarea id="lab-copy" rows="3">Czech Fashion Week propojuje návrháře, výrazné osobnosti a publikum. Příběhy české módy vznikají na přehlídkách, v zákulisí i při skutečných setkáních.</textarea></label>
+      <div class="lab-preview" id="lab-preview">
+        <p class="lab-kicker">Czech Fashion Week</p>
+        <h3 class="lab-display">Móda. Naživo.</h3>
+        <p class="lab-reading" id="lab-reading">Czech Fashion Week propojuje návrháře, výrazné osobnosti a publikum. Příběhy české módy vznikají na přehlídkách, v zákulisí i při skutečných setkáních.</p>
+        <p class="lab-glyphs">ěščřžýáíéúůďťň · ĚŠČŘŽÝÁÍÉÚŮĎŤŇ<br />Il1 / O0 / 8B / 5S · 0123456789</p>
+        <div class="lab-event"><span><Icon name="calendar" /> 20. listopadu 2026</span><span><Icon name="clock" /> 20:00</span><span><Icon name="location" /> Praha</span></div>
+        <a class="button lab-sample-button" href={url('program/praha-glamour-2026/')}><Icon name="ticket" /> Program a vstupenky <Icon name="arrow-up-right" /></a>
+      </div>
+      <div class="lab-comparisons">{families.map(family => <article style={`--comparison-font:'${family.display}'`}><p>{family.name}</p><h3>Příběhy české módy.</h3></article>)}</div>
+      <div class="lab-rules"><h3>Pravidla nové sazby</h3><ul><li>Běžný text 16–18 px, řádkování přibližně 1,65.</li><li>Ovládání 14 px, nejmenší podpůrné popisky 13 px.</li><li>Titulky 500–600, bez jemných vlasových tahů a dekorativní kurzivy.</li><li>Česká diakritika ověřená přímo ve fontových souborech.</li></ul><p>Volba vhodnosti je návrhářské posouzení pro CFW, nikoli výsledek měření rychlosti čtení. Podrobné porovnání zahrnuje také Inter a Satoshi; Satoshi nebyl zvolen kvůli podmínkám redistribuce ve veřejném repozitáři.</p></div>
+    </section>
+
+    <section class="lab-section" aria-labelledby="icons-title"><div class="lab-section-heading"><p class="eyebrow">02 / Vlastní ikonografie</p><h2 id="icons-title">Jedna kresba.<br />{names.length} významů.</h2><p>Geometrie 24 × 24, tah 1,65 px, jednotné zakončení a barva převzatá z rozhraní. Každá ikona je skutečné SVG.</p></div>
+      <div class="lab-downloads"><a class="button button--dark" href={url('icons/cfw-icons.zip')} download><Icon name="download" /> Stáhnout celou sadu SVG</a><a class="text-link" href={url('icons/cfw-icons.svg')} download>SVG sprite <Icon name="download" /></a></div>
+      <div class="lab-icon-grid">{names.map(name => <a class="lab-icon-item" href={url(`icons/${name}.svg`)} download={`cfw-${name}.svg`} aria-label={`Stáhnout ikonu: ${iconLabels[name]}`}><Icon name={name} size={28} /><span>{iconLabels[name]}</span><code>{name}</code></a>)}</div>
+    </section>
+  </div>
+  <script type="application/json" id="lab-families" set:html={JSON.stringify(families)} />
+</Layout>
+<script>
+  const preview = document.querySelector<HTMLElement>('#lab-preview');
+  const font = document.querySelector<HTMLSelectElement>('#lab-font');
+  const width = document.querySelector<HTMLSelectElement>('#lab-width');
+  const size = document.querySelector<HTMLInputElement>('#lab-size');
+  const weight = document.querySelector<HTMLSelectElement>('#lab-weight');
+  const theme = document.querySelector<HTMLButtonElement>('#lab-theme');
+  const copy = document.querySelector<HTMLTextAreaElement>('#lab-copy');
+  const families = JSON.parse(document.querySelector('#lab-families')?.textContent || '[]');
+  function updatePreview() {
+    if (!preview || !font || !width || !size || !weight || !copy) return;
+    const family = families.find((item: {id:string}) => item.id === font.value);
+    if (!family) return;
+    preview.style.setProperty('--lab-display', `'${family.display}'`);
+    preview.style.setProperty('--lab-body', `'${family.body}'`);
+    preview.style.setProperty('--lab-width', width.value === 'fluid' ? '100%' : `${width.value}px`);
+    preview.style.setProperty('--lab-size', `${size.value}px`);
+    preview.style.setProperty('--lab-weight', weight.value);
+    const reading = document.querySelector('#lab-reading');
+    const note = document.querySelector('#lab-font-note');
+    const output = document.querySelector('#lab-size-value');
+    if (reading) reading.textContent = copy.value;
+    if (note) note.textContent = family.note;
+    if (output) output.textContent = `${size.value} px`;
+  }
+  [font, width, size, weight, copy].forEach(control => control?.addEventListener('input', updatePreview));
+  theme?.addEventListener('click', () => { const dark = theme.getAttribute('aria-pressed') !== 'true'; theme.setAttribute('aria-pressed', String(dark)); preview?.classList.toggle('lab-preview--dark', dark); });
+</script>

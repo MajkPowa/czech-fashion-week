@@ -35,8 +35,12 @@ Kontaktní formulář otevírá předvyplněný e-mail; nevyžaduje server, neuk
 
 ## Typografie, ikony a partneři
 
-Titulky používají variabilní Bodoni Moda s optickou velikostí a pravou kurzivou; běžný text a navigace používají Manrope. Písma jsou uložená lokálně. Obě licence OFL jsou v `public/licenses`.
+Produkční stránky používají jednu lokálně uloženou rodinu **Onest Variable** pod licencí OFL. Základní velikost je 17 px s řádkováním 1,65; běžný text pracuje s 16–18 px, ovládání s 14 px a podpůrné popisky s 13 px. Hlavní řezy jsou 400 a 500. Výrazný kontrast vlasových tahů a kurziva předchozí Bodoni Moda se v důležitém textu ani ovládání nepoužívají.
 
-`src/components/Icon.astro` obsahuje vlastní SVG ikonografii CFW. Šipky a ovládací symboly jsou vektorové cesty, nikoli znaky fontu; systémové emoji jejich vzhled neovlivní.
+Výběr, ověření českých znaků, licence a omezení porovnání popisuje [analýza typografie](research/TYPOGRAPHY-ANALYSIS-v3.md). Pomocná stránka [`/design-system/`](https://majkpowa.github.io/czech-fashion-week/design-system/) nabízí interaktivní porovnání Onest, Geist, Plus Jakarta Sans a předchozí kombinace Bodoni Moda + Manrope na stejných českých textech. Stránka má `noindex` a není součástí hlavní navigace.
+
+`src/components/Icon.astro` používá centrální sadu **38 vlastních SVG ikon** ze `src/lib/iconography.ts`. Šipky a ovládací symboly jsou vektorové cesty, nikoli znaky fontu; systémové emoji jejich vzhled neovlivní. Pravidla kresby, významy a použití dokumentuje [ikonografie](research/ICONOGRAPHY-v3.md).
+
+`scripts/export-icons.mjs` při každém `npm run build` vytvoří v `public/icons/` jednotlivé SVG, sprite `cfw-icons.svg`, `manifest.json` a archiv `cfw-icons.zip`. Pomocná stránka design systému obsahuje katalog celé sady, přepnutí světlého/tmavého podkladu a stažení podkladů.
 
 `src/data/partners.ts` eviduje všech 22 partnerů a 8 záštit z přehledu na straně 5 prezentace CFW 2025 a dalších 13 značek z historických realizací na straně 18. `public/partners` obsahuje autentická loga; přesné zdroje a nahrazení málo kvalitních bitmap shodnými oficiálními variantami dokumentuje `research/PARTNERS-SOURCES.md`. Hlavní stránka ukazuje všech 35 partnerských značek, stránka Partneři i osm historických záštit. Úplné partnerské panely z roku 2024 lze rozbalit v obou přehledech. Mediální kanály reklamní kampaně nejsou zaměňované za partnery.

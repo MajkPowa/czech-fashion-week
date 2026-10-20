@@ -1,0 +1,196 @@
+{
+  "grid": 24,
+  "stroke": 1.65,
+  "icons": [
+    {
+      "name": "arrow-up-right",
+      "label": "Pokračovat",
+      "file": "arrow-up-right.svg"
+    },
+    {
+      "name": "arrow-up-left",
+      "label": "Vrátit se",
+      "file": "arrow-up-left.svg"
+    },
+    {
+      "name": "arrow-right",
+      "label": "Další",
+      "file": "arrow-right.svg"
+    },
+    {
+      "name": "arrow-left",
+      "label": "Předchozí",
+      "file": "arrow-left.svg"
+    },
+    {
+      "name": "arrow-down",
+      "label": "Dolů",
+      "file": "arrow-down.svg"
+    },
+    {
+      "name": "arrow-up",
+      "label": "Nahoru",
+      "file": "arrow-up.svg"
+    },
+    {
+      "name": "external",
+      "label": "Otevřít externí odkaz",
+      "file": "external.svg"
+    },
+    {
+      "name": "close",
+      "label": "Zavřít",
+      "file": "close.svg"
+    },
+    {
+      "name": "menu",
+      "label": "Menu",
+      "file": "menu.svg"
+    },
+    {
+      "name": "plus",
+      "label": "Rozbalit",
+      "file": "plus.svg"
+    },
+    {
+      "name": "minus",
+      "label": "Sbalit",
+      "file": "minus.svg"
+    },
+    {
+      "name": "chevron-down",
+      "label": "Rozbalit výběr",
+      "file": "chevron-down.svg"
+    },
+    {
+      "name": "chevron-up",
+      "label": "Sbalit výběr",
+      "file": "chevron-up.svg"
+    },
+    {
+      "name": "search",
+      "label": "Hledat",
+      "file": "search.svg"
+    },
+    {
+      "name": "filter",
+      "label": "Filtry",
+      "file": "filter.svg"
+    },
+    {
+      "name": "reset",
+      "label": "Zrušit výběr",
+      "file": "reset.svg"
+    },
+    {
+      "name": "play",
+      "label": "Přehrát",
+      "file": "play.svg"
+    },
+    {
+      "name": "pause",
+      "label": "Pozastavit",
+      "file": "pause.svg"
+    },
+    {
+      "name": "volume-off",
+      "label": "Bez zvuku",
+      "file": "volume-off.svg"
+    },
+    {
+      "name": "calendar",
+      "label": "Datum",
+      "file": "calendar.svg"
+    },
+    {
+      "name": "clock",
+      "label": "Čas",
+      "file": "clock.svg"
+    },
+    {
+      "name": "location",
+      "label": "Místo",
+      "file": "location.svg"
+    },
+    {
+      "name": "ticket",
+      "label": "Vstupenky",
+      "file": "ticket.svg"
+    },
+    {
+      "name": "mail",
+      "label": "E-mail",
+      "file": "mail.svg"
+    },
+    {
+      "name": "phone",
+      "label": "Telefon",
+      "file": "phone.svg"
+    },
+    {
+      "name": "copy",
+      "label": "Zkopírovat",
+      "file": "copy.svg"
+    },
+    {
+      "name": "check",
+      "label": "Potvrzeno",
+      "file": "check.svg"
+    },
+    {
+      "name": "download",
+      "label": "Stáhnout",
+      "file": "download.svg"
+    },
+    {
+      "name": "contrast",
+      "label": "Světlý a tmavý podklad",
+      "file": "contrast.svg"
+    },
+    {
+      "name": "photo",
+      "label": "Fotografie",
+      "file": "photo.svg"
+    },
+    {
+      "name": "film",
+      "label": "Film",
+      "file": "film.svg"
+    },
+    {
+      "name": "collection",
+      "label": "Kolekce",
+      "file": "collection.svg"
+    },
+    {
+      "name": "info",
+      "label": "Informace",
+      "file": "info.svg"
+    },
+    {
+      "name": "expand",
+      "label": "Otevřít detail",
+      "file": "expand.svg"
+    },
+    {
+      "name": "hanger",
+      "label": "Dress code",
+      "file": "hanger.svg"
+    },
+    {
+      "name": "users",
+      "label": "Setkání",
+      "file": "users.svg"
+    },
+    {
+      "name": "flag",
+      "label": "Prezentace značky",
+      "file": "flag.svg"
+    },
+    {
+      "name": "link",
+      "label": "Spolupráce",
+      "file": "link.svg"
+    }
+  ]
+}

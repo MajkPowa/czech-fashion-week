@@ -1,4 +1,4 @@
-/* CFW: long stems, open heads and precise square-cut strokes. */
+/* CFW: 24 px geometry, readable open heads and consistent 1.65 px strokes. */
 .cf-icon {
   display: inline-block;
   width: var(--icon-size, 20px);
@@ -10,20 +10,56 @@
 }
 .button .cf-icon, .text-link .cf-icon { vertical-align: middle; }
 .footer-invitation .cf-icon { --icon-size: clamp(42px, 6vw, 90px); }
-.footer-bottom .cf-icon { --icon-size: 14px; margin-left: 6px; }
+.footer-bottom .cf-icon { --icon-size: 16px; margin-left: 6px; }
 .footer-email .cf-icon { --icon-size: 16px; }
-.mobile-menu .cf-icon { --icon-size: 27px; }
+.mobile-menu .cf-icon { --icon-size: 24px; }
 .menu-toggle-icon { display: inline-grid; place-items: center; width: 24px; height: 24px; }
 .menu-toggle-icon .cf-icon { --icon-size: 24px; grid-area: 1 / 1; vertical-align: middle; }
 .menu-toggle[aria-expanded="false"] .cf-icon--close,
 .menu-toggle[aria-expanded="true"] .cf-icon--menu { display: none; }
 .place-arrow .cf-icon, .row-arrow .cf-icon { --icon-size: 32px; }
-.scroll-cue .cf-icon { --icon-size: 26px; }
-.media-card-open .cf-icon { --icon-size: 22px; vertical-align: middle; }
-.media-card-film .cf-icon { --icon-size: 12px; vertical-align: middle; }
-.media-dialog-arrow .cf-icon { --icon-size: 26px; vertical-align: middle; }
-.media-dialog-top .cf-icon { --icon-size: 18px; vertical-align: middle; }
+.scroll-cue .cf-icon { --icon-size: 24px; }
+.media-card-open .cf-icon { --icon-size: 24px; vertical-align: middle; }
+.media-card-film .cf-icon { --icon-size: 16px; vertical-align: middle; }
+.media-dialog-arrow .cf-icon { --icon-size: 24px; vertical-align: middle; }
+.media-dialog-top .cf-icon { --icon-size: 20px; vertical-align: middle; }
 .media-detail-top .cf-icon, .media-dialog-meta .cf-icon { --icon-size: 16px; }
+.icon-label { display: inline-flex; align-items: center; gap: 9px; }
+.icon-label > .cf-icon, .field-label > .cf-icon, .contact-official > .cf-icon { --icon-size: 16px; }
+.field-label { display: inline-flex; align-items: center; gap: 8px; }
+.icon-select { display: block; position: relative; width: 100%; min-width: 0; }
+.icon-select > select { appearance: none; -webkit-appearance: none; background-image: none; padding-right: 30px; }
+.archive-field .icon-select > select, .inquiry-form .icon-select > select { padding-right: 32px; }
+.icon-select > .cf-icon { --icon-size: 16px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+.inquiry-form .icon-select > .cf-icon { right: 14px; }
+.icon-select > .cf-icon--chevron-up { display: none; }
+.icon-select:has(select:open) > .cf-icon--chevron-up { display: inline-block; }
+.icon-select:has(select:open) > .cf-icon--chevron-down { display: none; }
+.event-detail-meta .icon-label { gap: 8px; }
+.event-detail-meta .cf-icon { --icon-size: 16px; }
+.event-facts dt { display: flex; align-items: center; gap: 8px; }
+.event-facts dt > .cf-icon { --icon-size: 16px; }
+.program-date { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.program-date .cf-icon { --icon-size: 20px; }
+.contact-detail .icon-label { gap: 12px; }
+.contact-detail > .icon-label > .cf-icon { --icon-size: 20px; }
+.contact-detail p.icon-label { align-items: flex-start; }
+.contact-detail p.icon-label > .cf-icon { margin-top: 3px; }
+.contact-official > .cf-icon { margin-right: 5px; }
+.benefit-number .cf-icon { --icon-size: 24px; margin-right: 10px; }
+[data-video-toggle] { display: inline-flex; align-items: center; gap: 12px; }
+[data-video-toggle] .cf-icon { --icon-size: 20px; vertical-align: middle; }
+[data-video-toggle][aria-pressed="false"] .cf-icon--pause,
+[data-video-toggle][aria-pressed="true"] .cf-icon--play { display: none; }
+.video-note { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 9px; }
+.video-note .cf-icon { --icon-size: 16px; }
+.copy-state { display: inline-flex; align-items: center; }
+#copy-email:not([data-copied="true"]) .cf-icon--check,
+#copy-email[data-copied="true"] .cf-icon--copy { display: none; }
+.menu-toggle, .media-dialog-arrow, .media-dialog-top button,
+.archive-reset, [data-reset], [data-video-toggle], #copy-email,
+.programme-filter button { min-height: 44px; }
+.media-dialog-arrow, .media-dialog-top button { min-width: 44px; }
 @media (max-width: 760px) {
-  .place-arrow .cf-icon, .row-arrow .cf-icon { --icon-size: 26px; }
+  .place-arrow .cf-icon, .row-arrow .cf-icon { --icon-size: 24px; }
 }

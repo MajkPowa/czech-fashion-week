@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/czech-fashion-week',
   output: 'static',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: page => !page.includes('/design-system/') })],
   devToolbar: { enabled: false },
 });

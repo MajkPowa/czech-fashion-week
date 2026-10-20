@@ -1,68 +1,137 @@
-/* CFW typography: an expressive editorial voice, with quiet, legible UI. */
+/* CFW reading system: one family, clear hierarchy, no fragile hairlines. */
 :root {
-  --font-display: 'Bodoni Moda Variable', Didot, 'Times New Roman', serif;
-  --font-body: 'Manrope Variable', Arial, sans-serif;
+  --font-display: 'Onest Variable', Arial, sans-serif;
+  --font-body: 'Onest Variable', Arial, sans-serif;
+  --muted: #5e5a53;
+  --gold-ink: #806234;
   font-family: var(--font-body);
+  font-size: 17px;
 }
-
-body { font-family: var(--font-body); font-weight: 400; }
+body { font-family: var(--font-body); font-weight: 400; line-height: 1.65; }
 body h1, body h2, body h3 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  letter-spacing: -.035em;
-  line-height: 1.08;
-}
-
-body .hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(100px, 11.4vw, 172px);
-  font-weight: 400;
-  line-height: .98;
-  letter-spacing: -.05em;
-}
-body .hero-headline span { font-style: italic; margin-left: 7vw; }
-body .intro-statement h2 em, body .archive-intro h1 em { font-style: italic; }
-body .intro-statement h2 { font-size: clamp(38px, 4.7vw, 70px); line-height: 1.17; }
-body .section-title, body .archive-intro h1, body .page-hero h1,
-body .designer-profile h1, body .event-detail-title, body .partnership-hero h1,
-body .contact-heading h1, body .not-found h1, body .fashion-motion h2,
-body .archive-feature h2, body .partner-invitation h2, body .contact-panel h2 {
-  font-weight: 400;
-  letter-spacing: -.04em;
-  line-height: 1.06;
-}
-body .designer-editorial h3, body .designer-tile h2, body .event-row h3,
-body .benefit h3, body .charity-item h3, body .history-item h3, body .place h3 {
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
   letter-spacing: -.025em;
-  line-height: 1.13;
+  line-height: 1.12;
+  text-wrap: balance;
 }
-body .footer-invitation, body .archive-feature-year,
-body .number, body .ribbon-date strong, body .event-row .event-year, body .history-item .history-year {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  letter-spacing: -.045em;
-}
-body .archive-years a { font-family: var(--font-display); font-weight: 400; letter-spacing: -.025em; }
-body .archive-years a > span { font-family: var(--font-body); }
-body .contact-detail h2 { font-family: var(--font-body); font-weight: 600; }
-body .section-intro, body .intro-sub p { font-weight: 400; }
-.desktop-nav a, .header-contact { font-size: 12px; }
-.eyebrow { font-weight: 600; letter-spacing: .15em; }
-.mobile-menu a { font-family: var(--font-display); font-size: 32px; font-weight: 400; letter-spacing: -.02em; }
-.mobile-menu small { font-family: var(--font-body); }
-.mobile-menu { max-height: calc(100dvh - var(--header-height)); overflow-y: auto; }
+body h1 em, body h2 em, body h3 em, body .hero-headline span { font-style: normal; }
+body .hero-headline { font-size: clamp(88px, 10.5vw, 154px); font-weight: 500; line-height: 1.02; letter-spacing: -.04em; }
+body .hero-headline span { margin-left: 6vw; }
+body .intro-statement h2 { font-size: clamp(36px, 4.4vw, 65px); line-height: 1.22; letter-spacing: -.025em; }
+body .intro-statement h2 em { color: var(--ink); }
+body .section-title { font-size: clamp(43px, 5.8vw, 84px); }
+body .page-hero h1 { font-size: clamp(56px, 8.5vw, 122px); }
+body .event-detail-title { font-size: clamp(52px, 7.6vw, 108px); }
+body .partnership-hero h1, body .contact-heading h1 { font-size: clamp(48px, 6.5vw, 91px); }
+body .partners-heading h2 { font-size: clamp(42px, 5.1vw, 73px); }
+body .partners-heading h2 em { font-weight: 500; color: var(--ink); }
+body .designer-profile h1 { font-size: clamp(54px, 6.1vw, 85px); }
+body .designer-editorial h3, body .designer-tile h2 { font-weight: 500; letter-spacing: -.02em; }
+body .section-intro { font-size: clamp(18px, 1.55vw, 22px); font-weight: 400; line-height: 1.7; }
+body .eyebrow { font-size: 13px; font-weight: 600; line-height: 1.5; letter-spacing: .07em; }
+body .gold { color: var(--gold-ink); }
+body .number { color: var(--gold-ink); }
+body.page-dark { --muted: #c0bbb0; }
+body.page-dark .gold { color: var(--gold); }
 
+body .desktop-nav a, body .header-contact, body .menu-toggle,
+body .text-link, body .button, body .programme-filter button { font-size: 14px; font-weight: 500; letter-spacing: 0; }
+body .text-link { line-height: 1.5; gap: 22px; min-height: 36px; align-items: center; }
+body .button { gap: 24px; line-height: 1.5; }
+body .header-contact { align-items: center; gap: 20px; }
+body .mobile-menu a { font-family: var(--font-display); font-size: 30px; font-weight: 500; letter-spacing: -.02em; }
+body .mobile-menu small { font-family: var(--font-body); font-size: 13px; }
+.mobile-menu { max-height: calc(100dvh - var(--header-height)); overflow-y: auto; }
+body .breadcrumb, body .image-caption, body .source-note, body .tag { font-size: 13px; line-height: 1.6; letter-spacing: 0; }
+body .source-note { max-width: 75ch; }
+body .hero-photo-credit { font-size: 13px; line-height: 1.55; opacity: .9; }
+body .hero-edition { font-size: 13px; letter-spacing: .07em; }
+body .hero-bottom .scroll-cue { font-size: 13px; letter-spacing: .06em; }
+body .intro-sub p, body .archive-feature-copy p, body .partner-invitation p,
+body .event-meta, body .benefit p, body .profile-description,
+body .charity-item p, body .contact-panel p, body .history-item p,
+body .partners-heading > p { font-size: 17px; line-height: 1.7; }
+body .designer-editorial p, body .designer-category, body .designer-years,
+body .profile-gallery .media-year, body .designer-profile .years,
+body .benefit-number, body .charity-year, body .charity-beneficiary,
+body .contact-official, body .contact-detail p { font-size: 14px; line-height: 1.6; letter-spacing: 0; }
+body .partner-logo-card figcaption, body .partner-group-heading h3,
+body .partner-group-heading > span, body .partner-panels summary,
+body .partner-panels-content > p, body .partner-panel-link figcaption,
+body .partners-more > p { font-size: 13px; line-height: 1.55; letter-spacing: 0; }
+body .partner-group-heading h3 { font-weight: 600; }
+body .partner-logo-card { padding-bottom: 20px; }
+
+body .footer-invitation { font-family: var(--font-display); font-weight: 500; font-size: clamp(42px, 7vw, 100px); line-height: 1.13; letter-spacing: -.03em; }
+body .footer-label, body .footer-bottom { font-size: 13px; line-height: 1.6; letter-spacing: .02em; }
+body .footer-grid > div > a, body .footer-email p:last-child { font-size: 15px; line-height: 2; }
+body .footer-email a { font-size: 16px !important; overflow-wrap: anywhere; }
+body .footer-grid { grid-template-columns: .7fr 1fr 1fr 1.8fr; }
+body .contact-detail h2 { font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: .06em; }
+body .inquiry-form label, body .inquiry-form .form-note, body .inquiry-form .form-status { font-size: 14px; line-height: 1.6; }
+body .inquiry-form input, body .inquiry-form select, body .inquiry-form textarea,
+body .archive-field select, body .archive-field input { font-size: 16px; line-height: 1.5; }
+body .archive-field { font-size: 13px; letter-spacing: .03em; }
+body .archive-result-bar, body .archive-result-bar > p, body .archive-reset,
+body .archive-pagination, body .media-card-caption, body .media-card-caption span:last-child,
+body .media-card-film, body .media-dialog-top p, body .media-dialog-top button,
+body .media-dialog-caption [data-dialog-credit], body .media-dialog-meta,
+body .media-detail-top, body .media-detail-caption p, body .media-detail-navigation a { font-size: 13px; line-height: 1.55; }
+body .archive-result-bar { flex-wrap: wrap; }
+body .archive-reset { white-space: normal; }
+body .archive-years a { font-family: var(--font-body); font-weight: 500; letter-spacing: -.02em; }
+body .archive-years a > span { font-family: var(--font-body); font-size: 13px; letter-spacing: .03em; }
+body .media-dialog-caption [data-dialog-title] { font-size: 16px; }
+body .archive-intro h1 { font-weight: 500; font-size: clamp(64px, 9vw, 130px); letter-spacing: -.035em; }
+body .archive-intro h1 em { color: var(--gold-ink); }
+body .media-detail-caption h1 { font-weight: 500; letter-spacing: -.025em; }
+body .ribbon-date strong, body .event-year, body .history-year { font-weight: 500; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.025em; }
+
+@media (max-width: 1100px) {
+  body .desktop-nav { gap: 22px; }
+  body .header-inner { gap: 22px; }
+  body .footer-grid { grid-template-columns: 1fr 1fr; }
+  body .brand-logo--footer, body .footer-email { grid-column: 1 / -1; }
+}
 @media (max-width: 760px) {
-  body .hero-headline { font-size: clamp(86px, 20vw, 140px); line-height: .97; }
-  body .hero-headline span { margin-left: 9vw; }
-  body .intro-statement h2 { font-size: clamp(36px, 8.5vw, 56px); }
-  body .section-title { font-size: clamp(43px, 10.8vw, 65px); }
-  body .event-detail-title { font-size: clamp(48px, 12vw, 70px); }
-  body .partnership-hero h1, body .contact-heading h1 { font-size: clamp(49px, 12.7vw, 68px); }
-  body .designer-profile h1 { font-size: clamp(56px, 13vw, 76px); }
-  body .designer-tile h2 { font-size: clamp(25px, 6.4vw, 37px); }
-  body .footer-invitation { font-size: clamp(44px, 10.7vw, 70px); }
+  body .hero-headline { font-size: clamp(70px, 18vw, 112px); line-height: 1.06; }
+  body .hero-headline span { margin-left: 5vw; }
+  body .hero-edition { display: none; }
+  body .hero-content { padding-top: 30px; }
+  body .intro-statement h2 { font-size: clamp(30px, 7.7vw, 43px); }
+  body .section-title, body .partners-heading h2 { font-size: clamp(35px, 8.8vw, 54px); }
+  body .event-detail-title { font-size: clamp(42px, 10.2vw, 67px); }
+  body .partnership-hero h1, body .contact-heading h1, body .page-hero h1 { font-size: clamp(42px, 10.2vw, 62px); }
+  body .designer-profile h1 { font-size: clamp(42px, 10.4vw, 64px); }
+  body .designer-tile h2 { font-size: 25px; }
+  body .footer-invitation { font-size: clamp(38px, 9vw, 60px); }
+  body .event-ribbon-inner { grid-template-columns: 1fr; gap: 18px; padding-block: 27px; }
+  body .ribbon-link { justify-self: start; }
+  body .ribbon-date strong { font-size: 44px; }
+  body .footer-bottom { grid-template-columns: 1fr; gap: 17px; }
+  body .event-row { grid-template-columns: 76px minmax(0, 1fr) 26px; }
+  body .event-row h3 { font-size: 25px; }
+  body .event-row .event-year { font-size: 28px; }
+  body .event-meta { font-size: 14px; }
+  body .history-item { grid-template-columns: 70px minmax(0, 1fr); gap: 20px; }
+  body .history-item h3 { font-size: 25px; }
+  body .history-item .history-year { font-size: 30px; }
+  body .archive-intro h1 { font-size: clamp(58px, 14.5vw, 88px); }
+  body .archive-intro-aside > p:first-of-type br { display: initial; }
+  body .media-dialog-top p { max-width: 58%; }
+  body .media-dialog-caption { flex-wrap: wrap; }
+  body .media-dialog-meta { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
+  body .media-detail-navigation a { font-size: 13px; }
+  body .partner-group-heading { align-items: start; gap: 16px; }
+  body .partner-group-heading h3 { max-width: 28ch; }
+}
+@media (max-width: 360px) {
+  body .designer-index { grid-template-columns: 1fr; }
+  body .designer-tile:nth-child(even) { padding-top: 0; }
+}
+@media (max-width: 480px) {
+  body .archive-years { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+  body .archive-years a { font-size: 30px; }
 }

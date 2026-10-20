@@ -25,11 +25,21 @@ motion.add('(prefers-reduced-motion: no-preference)', () => {
 document.querySelectorAll<HTMLButtonElement>('[data-video-toggle]').forEach(button => {
   const video = document.getElementById(button.dataset.videoToggle || '') as HTMLVideoElement | null;
   if (!video) return;
+  const label = button.querySelector<HTMLElement>('[data-video-label]');
+  const reflectPlayback = () => {
+    const playing = !video.paused && !video.ended;
+    button.setAttribute('aria-pressed', String(playing));
+    if (label) label.textContent = playing ? 'Pozastavit film' : 'Přehrát film';
+  };
+  video.addEventListener('play', reflectPlayback);
+  video.addEventListener('pause', reflectPlayback);
+  video.addEventListener('ended', reflectPlayback);
   button.addEventListener('click', async () => {
-    if (video.paused) { try { await video.play(); button.textContent = 'Pozastavit film'; button.setAttribute('aria-pressed','true'); } catch { button.textContent = 'Přehrát film'; } }
-    else { video.pause(); button.textContent = 'Přehrát film'; button.setAttribute('aria-pressed','false'); }
+    if (video.paused) { try { await video.play(); } catch { reflectPlayback(); } }
+    else video.pause();
   });
-  new IntersectionObserver(entries => { if (!entries[0].isIntersecting) { video.pause(); button.textContent = 'Přehrát film'; button.setAttribute('aria-pressed','false'); } }, { threshold: .1 }).observe(video);
+  new IntersectionObserver(entries => { if (!entries[0].isIntersecting) video.pause(); }, { threshold: .1 }).observe(video);
+  reflectPlayback();
 });
 }
 

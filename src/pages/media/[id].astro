@@ -17,12 +17,12 @@ const minutes = item.duration ? `${Math.floor(item.duration / 60)}:${String(Math
 ---
 <Layout title={`${item.title} — ${item.year}`} description={`${item.city}, Czech Fashion Week ${item.year}. ${item.collection || ''} ${item.type === 'video' ? 'Film' : 'Fotografie'} z archivu.`} active="archiv" dark>
   <div class="media-detail container" data-media-page>
-    <div class="media-detail-top"><a href={url(`archiv/${item.year}/`)} class="text-link" data-archive-return>Zpět do archivu <span aria-hidden="true">↖</span></a><span>{item.year} / {item.city}</span></div>
+    <div class="media-detail-top"><a href={url(`archiv/${item.year}/`)} class="text-link" data-archive-return><span aria-hidden="true"><Icon name="arrow-up-left" /></span>Zpět do archivu</a><span>{item.year} / {item.city}</span></div>
     <figure class="media-detail-figure">
       {item.type === 'video' ? <video controls playsinline preload="metadata" poster={url(item.poster || item.thumb)} width={item.width} height={item.height} aria-label={item.alt || item.title}><source src={url(item.src)} type="video/mp4" /><p>Prohlížeč nepodporuje přehrávání videa. <a href={url(item.src)}>Otevřít video</a></p></video> : <img src={url(item.src)} width={item.width} height={item.height} alt={item.alt || item.title} fetchpriority="high" decoding="async" />}
     </figure>
-    <div class="media-detail-caption"><div><p class="eyebrow">{item.type === 'video' ? `FILM${minutes ? ` / ${minutes}` : ''}` : 'FOTOGRAFIE'} / {item.year}</p><h1>{item.collection || item.title}</h1><p>{item.title}</p></div><div class="media-detail-credits"><p>{item.city}</p><p>{item.credit || 'Archiv Czech Fashion Week'}</p>{item.photographer && <p>Autor: {item.photographer}</p>}<p>Historický záznam Czech Fashion Week.</p></div></div>
-    <nav class="media-detail-navigation" aria-label="Další média stejného ročníku"><a href={url(`media/${previous.id}/`)}><span aria-hidden="true"><Icon name="arrow-left" /></span> Předchozí médium</a><a href={url(`archiv/${item.year}/`)}>Celý ročník {item.year}</a><a href={url(`media/${next.id}/`)}>Další médium <span aria-hidden="true"><Icon name="arrow-right" /></span></a></nav>
+    <div class="media-detail-caption"><div><p class="eyebrow icon-label"><Icon name={item.type === 'video' ? 'film' : 'photo'} /><span>{item.type === 'video' ? `FILM${minutes ? ` / ${minutes}` : ''}` : 'FOTOGRAFIE'} / {item.year}</span></p><h1>{item.collection || item.title}</h1><p>{item.title}</p></div><div class="media-detail-credits"><p>{item.city}</p><p>{item.credit || 'Archiv Czech Fashion Week'}</p>{item.photographer && <p>Autor: {item.photographer}</p>}<p>Historický záznam Czech Fashion Week.</p></div></div>
+    <nav class="media-detail-navigation" aria-label="Další média stejného ročníku"><a href={url(`media/${previous.id}/`)}><span aria-hidden="true"><Icon name="arrow-left" /></span> Předchozí médium</a><a href={url(`archiv/${item.year}/`)}><Icon name="collection" />Celý ročník {item.year}</a><a href={url(`media/${next.id}/`)}>Další médium <span aria-hidden="true"><Icon name="arrow-right" /></span></a></nav>
   </div>
 </Layout>
 
