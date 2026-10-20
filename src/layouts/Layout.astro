@@ -1,6 +1,7 @@
 ---
 import Icon from '../components/Icon.astro';
 import TicketLink from '../components/TicketLink.astro';
+import MobileTicketBar from '../components/MobileTicketBar.astro';
 import { primaryTicketEvent } from '../data/events';
 import '@fontsource-variable/onest';
 import '../styles/global.css';
@@ -33,7 +34,7 @@ const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
     <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
     <slot name="head" />
   </head>
-  <body class:list={[dark && 'page-dark']}>
+  <body class:list={[dark && 'page-dark', primaryTicketEvent && 'has-mobile-tickets']}>
     <a class="skip-link" href="#main">Přejít na obsah</a>
     <header class="site-header" id="site-header">
       <div class="header-inner">
@@ -66,6 +67,7 @@ const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
       </div>
       <div class="container footer-bottom"><span>© {new Date().getFullYear()} Czech Fashion Week</span><a href={url('o-webu/')}>O webu a fotografiích</a><a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">Oficiální informace CFW <Icon name="external" /></a><button class="motion-preference" data-motion-toggle type="button" aria-pressed="false" hidden>Omezit pohyb</button><a href="#main">Zpět nahoru <Icon name="arrow-up" /></a></div>
     </footer>
+    <MobileTicketBar />
     <script>
       import '../scripts/site';
     </script>

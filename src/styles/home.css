@@ -25,6 +25,17 @@ body .home-designer-grid .text-link{font-size:14px}
 @media(max-width:360px){body .home-designer-grid{grid-template-columns:minmax(0,1fr)}}
 
 .hero-ticket-note{font-size:13px;line-height:1.6;margin-top:12px;color:#fff}
+.hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(245px,30%);align-items:end;gap:32px}
+.hero-next-event{padding:24px;border:1px solid #ffffff40;border-top:2px solid var(--gold);background:#101010b3}
+.hero-next-event .eyebrow{font-size:12px;letter-spacing:.09em;color:#e2cfa9;margin-bottom:18px}
+.hero-next-event time{display:flex;flex-direction:column;gap:8px}
+.hero-next-date{font-size:clamp(58px,6.5vw,96px);line-height:1;font-weight:500;letter-spacing:-.045em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.hero-next-year{font-size:26px;line-height:1.2;color:#e2cfa9}
+.hero-next-title{font-size:18px;font-weight:500;margin-top:24px}
+.hero-next-time{font-size:15px;margin-top:8px;text-transform:capitalize}
+.hero-next-venue{font-size:13px;line-height:1.6;color:#ddd7cb;margin-top:6px}
+@media(min-width:761px){.hero-ticket-note{display:none}.hero-main .hero-actions{flex-wrap:wrap;gap:18px 28px}}
+@media(max-width:760px){.hero-main{display:block}.hero-next-event{display:none}}
 .ribbon-actions{justify-self:end;display:grid;gap:5px}
 .ribbon-detail{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:36px;font-size:13px;color:var(--muted)}
 .ribbon-detail:hover{text-decoration:underline;text-underline-offset:4px}

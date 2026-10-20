@@ -1,0 +1,9 @@
+---
+import TicketLink from './TicketLink.astro';
+import { primaryTicketEvent } from '../data/events';
+import '../styles/mobile-tickets.css';
+---
+{primaryTicketEvent && <aside class="mobile-ticket-bar" aria-label="Vstupenky na příští událost">
+  <p>{primaryTicketEvent.city} <span aria-hidden="true">·</span> <time datetime={primaryTicketEvent.date || undefined}>{primaryTicketEvent.dateLabel}</time></p>
+  <TicketLink class="button button--dark mobile-ticket-button" />
+</aside>}

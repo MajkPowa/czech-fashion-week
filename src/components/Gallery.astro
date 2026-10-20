@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import MobileTicketBar from './MobileTicketBar.astro';
 import mediaData from '../data/media.json';
 import { url } from '../lib/paths';
 import '../styles/gallery.css';
@@ -85,6 +86,7 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
       </div>
       <footer class="media-dialog-caption"><div><p id="cfw-media-title" data-dialog-title></p><p id="cfw-media-credit" data-dialog-credit></p></div><div class="media-dialog-meta"><span data-dialog-count aria-live="polite"></span><a href={url('archiv/')} data-dialog-detail>Samostatný detail <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></footer>
     </div>
+    <MobileTicketBar />
   </dialog>
   <script type="application/json" data-gallery-data set:html={JSON.stringify(media).replace(/</g, '\\u003c')} />
 </section>

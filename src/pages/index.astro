@@ -18,6 +18,9 @@ const backstage = media.find(m => m.year === 2020 && m.tags?.includes('backstage
 const runwayVideo = media.find(m => m.type === 'video' && m.year === 2024 && m.originalFilename.toLowerCase() === 'iveta.mov' && m.collection?.toLowerCase().includes('klett')) || media.find(m => m.type === 'video' && m.year === 2024);
 const seasonEvents = events.filter(event => event.year === 2026);
 const archiveImages = [klett, menswear, hero].filter(Boolean);
+const heroEventDate = primaryTicketEvent?.date ? new Date(primaryTicketEvent.date) : undefined;
+const heroEventDay = heroEventDate?.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric', timeZone: 'Europe/Prague' }).replace(/\s/g, '');
+const heroEventWeekday = heroEventDate?.toLocaleDateString('cs-CZ', { weekday: 'long', timeZone: 'Europe/Prague' });
 ---
 <Layout title="Czech Fashion Week" description="Móda. Naživo. Objevte Czech Fashion Week, CFW Glamour Praha 20. listopadu 2026 a fotografický archiv českých přehlídek.">
   <section class="home-hero" aria-labelledby="hero-title">
@@ -25,7 +28,9 @@ const archiveImages = [klett, menswear, hero].filter(Boolean);
     <video class="home-hero-video" id="hero-film" data-video-autoplay muted loop playsinline preload="metadata" width={officialPromoVideo.width} height={officialPromoVideo.height} aria-hidden="true" tabindex="-1" disablepictureinpicture><source media="(min-width: 761px)" src={url(officialPromoVideo.desktop)} type="video/mp4" /><source src={url(officialPromoVideo.mobile)} type="video/mp4" /></video>
     <div class="container hero-content">
       <div class="hero-top"><p class="eyebrow">Czech Fashion Week</p><p class="hero-edition">ČESKÁ MÓDA<br />V ŽIVÉM OBRAZE</p></div>
-      <div><h1 class="hero-headline" id="hero-title">Móda.<span>Naživo.</span></h1><div class="hero-actions"><TicketLink />{primaryTicketEvent && <a class="text-link" href={url(`program/${primaryTicketEvent.slug}/`)}>Objevte CFW Glamour <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}</div>{primaryTicketEvent && <p class="hero-ticket-note">{primaryTicketEvent.city} · {primaryTicketEvent.dateLabel} · {primaryTicketEvent.ticketProvider}</p>}</div>
+      <div class="hero-main"><div><h1 class="hero-headline" id="hero-title">Móda.<span>Naživo.</span></h1><div class="hero-actions"><TicketLink />{primaryTicketEvent && <a class="text-link" href={url(`program/${primaryTicketEvent.slug}/`)}>Objevte CFW Glamour <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}</div>{primaryTicketEvent && <p class="hero-ticket-note">{primaryTicketEvent.city} · {primaryTicketEvent.dateLabel} · {primaryTicketEvent.ticketProvider}</p>}</div>
+        {primaryTicketEvent && heroEventDay && <aside class="hero-next-event" aria-label="Příští událost"><p class="eyebrow">Nejbližší přehlídka</p><time datetime={primaryTicketEvent.date || undefined} aria-label={primaryTicketEvent.dateLabel}><span class="hero-next-date">{heroEventDay}</span><span class="hero-next-year">{primaryTicketEvent.year}</span></time><p class="hero-next-title">CFW Glamour · {primaryTicketEvent.city}</p><p class="hero-next-time">{heroEventWeekday} · {primaryTicketEvent.time}</p><p class="hero-next-venue">{primaryTicketEvent.venue}</p></aside>}
+      </div>
       <div class="hero-bottom"><p class="hero-photo-credit">Oficiální promo Czech Fashion Week<br />Móda v pohybu / cfw.cz</p><div class="hero-bottom-actions"><a class="scroll-cue" href="#pribeh">Příběh pokračuje <span aria-hidden="true"><Icon name="arrow-down" /></span></a></div></div>
     </div>
   </section>

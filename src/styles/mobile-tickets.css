@@ -1,0 +1,36 @@
+.mobile-ticket-bar { display: none; }
+
+@media (max-width: 760px) {
+  :root { --mobile-ticket-bar-space: calc(112px + env(safe-area-inset-bottom, 0px)); }
+  html:has(body.has-mobile-tickets) { scroll-padding-bottom: calc(var(--mobile-ticket-bar-space) + 16px); }
+  body.has-mobile-tickets { padding-bottom: var(--mobile-ticket-bar-space); }
+  body.has-mobile-tickets .mobile-menu { max-height: calc(100dvh - var(--header-height) - var(--mobile-ticket-bar-space)); }
+
+  .mobile-ticket-bar {
+    position: fixed;
+    z-index: 120;
+    inset: auto 0 0;
+    display: grid;
+    align-content: center;
+    gap: 8px;
+    min-height: var(--mobile-ticket-bar-space);
+    padding: 10px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid #d4cec3;
+    background: #f4f1eb;
+    color: #101010;
+    box-shadow: 0 -6px 24px #1010100d;
+  }
+  .mobile-ticket-bar > p { font-size: 13px; line-height: 1.5; text-align: center; max-width: none; }
+  .mobile-ticket-bar > p > span { margin-inline: 5px; }
+  body .mobile-ticket-bar .mobile-ticket-button {
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 20px;
+    font-size: 15px;
+    background: #101010;
+    border-color: #101010;
+    color: #f4f1eb;
+  }
+  body .mobile-ticket-bar .mobile-ticket-button:hover { background: #35332d; }
+  .has-mobile-tickets .media-dialog-shell { padding-bottom: calc(20px + var(--mobile-ticket-bar-space)); }
+}
