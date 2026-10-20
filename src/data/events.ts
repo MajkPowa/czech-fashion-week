@@ -25,6 +25,7 @@ export interface Event {
   designers: string[];
   sourceUrl: string | null;
   ticketUrl?: string;
+  ticketProvider?: string;
   time?: string;
   address?: string;
   dressCode?: string;
@@ -45,7 +46,8 @@ export const events: Event[] = [
     venue: 'PVA EXPO Praha Letňany · Hala 1', status: 'confirmed',
     description: 'Pražský večer představí Fashion Island SS27 a LYANIS Couture. Resort fashion a couture doplní hudební a společenský program.',
     designers: ['fashion-island'], sourceUrl: 'https://cfw.cz/praha/',
-    ticketUrl: 'https://www.ticketportal.cz/event/Czech-Fashion-Week-GLAMOUR',
+    ticketUrl: 'https://www.ticketportal.cz/event/Czech-Fashion-Week-GLAMOUR#vstupenky',
+    ticketProvider: 'Ticketportal',
     time: '20:00', address: 'Beranových 667, Praha 9–Letňany', dressCode: 'Cocktail Chic',
     practicalInfo: [
       'Začátek přehlídky je podle oficiálního programu ve 20:00.',
@@ -149,3 +151,4 @@ export const events: Event[] = [
 
 export const upcomingEvents = events.filter((event) => event.status === 'confirmed');
 export const completedEvents = events.filter((event) => event.status === 'completed');
+export const primaryTicketEvent = upcomingEvents.find((event) => event.ticketUrl);

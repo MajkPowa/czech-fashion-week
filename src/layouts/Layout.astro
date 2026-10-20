@@ -1,5 +1,7 @@
 ---
 import Icon from '../components/Icon.astro';
+import TicketLink from '../components/TicketLink.astro';
+import { primaryTicketEvent } from '../data/events';
 import '@fontsource-variable/onest';
 import '../styles/global.css';
 import '../styles/typography.css';
@@ -40,13 +42,14 @@ const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
           {navigation.map(([path,label]) => <a href={url(`${path}/`)} aria-current={active === path ? 'page' : undefined}>{label}</a>)}
         </nav>
         <div class="header-actions">
-          <a class="header-contact" href={url('kontakt/')}>Kontakt <span aria-hidden="true"><Icon name="mail" /></span></a>
+          <TicketLink class="header-contact" label="Vstupenky" />
           <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu"><span>Menu</span><span class="menu-toggle-icon" aria-hidden="true"><Icon name="menu" /><Icon name="close" /></span></button>
         </div>
       </div>
       <nav class="mobile-menu" id="mobile-menu" aria-label="Mobilní navigace" hidden>
         {navigation.map(([path,label],index) => <a href={url(`${path}/`)} aria-current={active === path ? 'page' : undefined}><small>0{index+1}</small>{label}<span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>)}
         <a href={url('kontakt/')}><small>06</small>Kontakt<span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>
+        {primaryTicketEvent?.ticketUrl && <a href={primaryTicketEvent.ticketUrl} target="_blank" rel="noopener noreferrer" data-ticket-event={primaryTicketEvent.slug} aria-label={`Vstupenky – ${primaryTicketEvent.title}. ${primaryTicketEvent.ticketProvider}; otevře se v novém panelu.`}><small>07</small>Vstupenky<span aria-hidden="true"><Icon name="ticket" /></span></a>}
       </nav>
     </header>
     <main id="main"><slot /></main>
@@ -57,7 +60,7 @@ const socialImage = new URL(url('media/p-690af7ddc36c83.webp'), Astro.site);
       </div>
       <div class="container footer-grid">
         <a class="brand-logo brand-logo--footer" href={url()} aria-label="Czech Fashion Week"><img src={url('cfw-logo.png')} alt="Czech Fashion Week" width="200" height="116" loading="lazy" /></a>
-        <div><p class="footer-label">Objevujte</p><a href={url('program/')}>Program</a><a href={url('navrhari/')}>Návrháři</a><a href={url('archiv/')}>Archiv ročníků</a></div>
+        <div><p class="footer-label">Objevujte</p><a href={url('program/')}>Program</a><TicketLink class="footer-tickets" label="Vstupenky Praha" /><a href={url('navrhari/')}>Návrháři</a><a href={url('archiv/')}>Archiv ročníků</a></div>
         <div><p class="footer-label">Spojme se</p><a href={url('partnerstvi/')}>Partnerství</a><a href={url('o-cfw/#moda-a-pomoc')}>Móda a pomoc</a><a href={url('kontakt/')}>Produkce a média</a></div>
         <div class="footer-email"><p class="footer-label">Czech Fashion Week</p><a href="mailto:produkce@czechfashionweek.eu">produkce@czechfashionweek.eu <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a><p>Česká móda. Výjimečná místa.<br />Skutečná setkání.</p></div>
       </div>

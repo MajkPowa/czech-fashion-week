@@ -1,3 +1,5 @@
+import { primaryTicketEvent } from './events';
+
 export const site = {
   name: 'Czech Fashion Week',
   shortName: 'CFW',
@@ -12,8 +14,8 @@ export const site = {
   address: 'Jindřišská 937/16, 110 00 Praha 1',
   contactSource: 'https://cfw.cz/kontakt/',
   contentVerifiedAt: '2026-10-20',
-  primaryEventSlug: 'praha-glamour-2026',
-  ticketUrl: 'https://www.ticketportal.cz/event/Czech-Fashion-Week-GLAMOUR',
+  primaryEventSlug: primaryTicketEvent?.slug,
+  ticketUrl: primaryTicketEvent?.ticketUrl,
   hero: {
     eyebrow: 'Czech Fashion Week',
     title: 'Móda. Naživo.',
@@ -111,5 +113,5 @@ export const historyMilestones = [
 
 export const officialLinks = [
   { label: 'Oficiální web CFW', href: 'https://cfw.cz/' },
-  { label: 'Vstupenky Praha 2026 · Ticketportal', href: 'https://www.ticketportal.cz/event/Czech-Fashion-Week-GLAMOUR' },
+  ...(primaryTicketEvent?.ticketUrl ? [{ label: `Vstupenky ${primaryTicketEvent.city} ${primaryTicketEvent.year} · ${primaryTicketEvent.ticketProvider}`, href: primaryTicketEvent.ticketUrl }] : []),
 ] as const;

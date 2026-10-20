@@ -1,0 +1,7 @@
+---
+import Icon from './Icon.astro';
+import { primaryTicketEvent, type Event } from '../data/events';
+interface Props { event?: Event; class?: string; label?: string; }
+const { event = primaryTicketEvent, class: className = 'button', label = 'Koupit vstupenky' } = Astro.props;
+---
+{event?.status === 'confirmed' && event.ticketUrl && <a class={className} href={event.ticketUrl} target="_blank" rel="noopener noreferrer" data-ticket-event={event.slug} aria-label={`${label} – ${event.title}, ${event.dateLabel}. ${event.ticketProvider || 'Prodejce'}; otevře se v novém panelu.`}>{label}<span aria-hidden="true"><Icon name="ticket" /></span></a>}

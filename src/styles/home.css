@@ -23,3 +23,9 @@ body .home-designer-grid .text-link{font-size:14px}
 @media(max-width:1000px){body .home-designer-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:35px 20px}}
 @media(max-width:760px){body .home-designer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}body .home-designer-grid h3{font-size:21px}.home-hero-video{object-position:50% 50%}.home-hero::after{background:linear-gradient(90deg,rgba(0,0,0,.38),rgba(0,0,0,.2)),linear-gradient(0deg,rgba(0,0,0,.6),transparent 75%)}.place--event h3{font-size:23px}}
 @media(max-width:360px){body .home-designer-grid{grid-template-columns:minmax(0,1fr)}}
+
+.hero-ticket-note{font-size:13px;line-height:1.6;margin-top:12px;color:#fff}
+.ribbon-actions{justify-self:end;display:grid;gap:5px}
+.ribbon-detail{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:36px;font-size:13px;color:var(--muted)}
+.ribbon-detail:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.ribbon-actions{grid-column:1/-1;justify-self:stretch;max-width:330px}.hero-headline{padding-top:90px}.hero-ticket-note{max-width:26ch}}

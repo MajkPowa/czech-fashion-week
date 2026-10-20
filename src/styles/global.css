@@ -14,3 +14,6 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1!important;transform:none!important}}
 .brand-logo{display:block;width:112px;flex-shrink:0}.brand-logo img{width:100%;height:auto;max-height:74px;object-fit:contain}.brand-logo--footer{width:145px;align-self:start}.brand-logo--footer img{filter:invert(1)}.page-dark .site-header .brand-logo img{filter:invert(1)}.site-header{position:sticky;top:0}.page-dark .button{color:var(--paper)}
 @media(max-width:760px){.brand-logo{width:96px}.brand-logo--footer{grid-column:1/-1;width:130px}}
+
+.ticket-provider{font-size:13px;line-height:1.6;color:var(--muted)}
+.footer-tickets .cf-icon{margin-left:8px;--icon-size:17px}
