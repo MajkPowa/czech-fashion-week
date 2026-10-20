@@ -8,7 +8,9 @@ import { url } from '../../lib/paths';
 import '../../styles/content.css';
 export function getStaticPaths() { return events.map(event => ({ params: { slug: event.slug }, props: { event } })); }
 const {event} = Astro.props;
-const image = event.archiveYear ? photoFor(event.archiveYear,event.archiveCity) : undefined;
+const archiveImage = event.archiveYear ? photoFor(event.archiveYear,event.archiveCity) : undefined;
+const image = event.image || archiveImage;
+const imageCaption = event.image?.caption || event.imageCaption || (archiveImage ? `${archiveImage.city} ${archiveImage.year} / Archiv CFW` : '');
 const related = designers.filter(designer => event.designers.includes(designer.slug));
 const archiveHref = event.archiveYear ? `archiv/?year=${event.archiveYear}&city=${encodeURIComponent(event.archiveCity || event.city)}` : undefined;
 const structured = event.status === 'confirmed' && event.date ? { '@context':'https://schema.org', '@type':'Event', name:event.title, startDate:event.date, eventStatus:'https://schema.org/EventScheduled',eventAttendanceMode:'https://schema.org/OfflineEventAttendanceMode',location:{'@type':'Place',name:event.venue,address:event.address},url:event.sourceUrl,description:event.description,organizer:{'@type':'Organization',name:'Czech Fashion Week',url:'https://cfw.cz/'} } : null;
@@ -16,7 +18,7 @@ const structured = event.status === 'confirmed' && event.date ? { '@context':'ht
 <Layout title={`${event.city} · ${event.dateLabel}`} active="program" description={event.description}>
   {structured && <script slot="head" type="application/ld+json" set:html={JSON.stringify(structured)} />}
   <section class="container event-detail-header"><nav class="breadcrumb" aria-label="Drobečková navigace"><a href={url()}>CFW</a><span>/</span><a href={url('program/')}>Program</a><span>/</span><span>{event.city}</span></nav><h1 class="event-detail-title">{event.title}</h1><div class="event-detail-meta"><span class="tag">{event.status === 'confirmed' ? 'Nadcházející událost' : 'Proběhlo / archiv'}</span><span class="icon-label"><Icon name="calendar" />{event.dateLabel}</span>{event.time && <span class="icon-label"><Icon name="clock" />{event.time}</span>}{event.venue && <span class="icon-label"><Icon name="location" />{event.venue}</span>}</div></section>
-  {image && <figure class="container"><img class="event-cover" src={url(image.src)} alt={image.alt} width={image.width} height={image.height} loading="eager" /><figcaption class="image-caption">{event.imageCaption || `${image.city} ${image.year} / Archiv CFW`}</figcaption></figure>}
+  {image && <figure class="container"><img class:list={['event-cover', event.image && event.image.kind !== 'photo' && 'event-cover--document']} src={url(image.src)} alt={image.alt} width={image.width} height={image.height} loading="eager" /><figcaption class="image-caption">{imageCaption}</figcaption></figure>}
   <section class="section container event-body"><div><section><p class="lead">{event.description}</p>{event.status === 'completed' && <p class="source-note">Tato stránka se věnuje historické události. Aktuální potvrzený program najdete v <a href={url('program/')}>přehledu událostí</a>.</p>}</section>
     {event.programme && <section><h2>Průběh večera</h2><ul class="event-schedule">{event.programme.map(item => <li><time>{item.time}</time><div><h3>{item.title}</h3>{item.description && <p>{item.description}</p>}</div></li>)}</ul></section>}
     {event.practicalInfo && <section><h2>Před návštěvou</h2><ul class="practical-list">{event.practicalInfo.map(info => <li>{info}</li>)}</ul></section>}
@@ -24,6 +26,15 @@ const structured = event.status === 'confirmed' && event.date ? { '@context':'ht
     {event.sourceUrl && <p class="source-note">Podrobnosti a případné změny: <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer">oficiální informace pořadatele <Icon name="external" /></a></p>}
   </div><aside><dl class="event-facts"><div><dt><Icon name="location" />Místo</dt><dd>{event.venue || event.city}</dd></div><div><dt><Icon name="calendar" />{event.status === 'confirmed' ? 'Termín' : 'Ročník'}</dt><dd>{event.dateLabel}{event.time && ` / ${event.time}`}</dd></div>{event.address && <div><dt><Icon name="location" />Adresa</dt><dd>{event.address}</dd></div>}{event.dressCode && <div><dt><Icon name="hanger" />Dress code</dt><dd>{event.dressCode}</dd></div>}<div><dt><Icon name="mail" />Produkce</dt><dd><a href="mailto:produkce@czechfashionweek.eu">produkce@czechfashionweek.eu</a></dd></div>
     {event.ticketUrl && <a class="button button--dark" href={event.ticketUrl} target="_blank" rel="noopener noreferrer">Vstupenky · Ticketportal <span aria-hidden="true"><Icon name="ticket" /></span></a>}
-    {archiveHref && <a class="button" href={url(archiveHref)}>{event.status==='confirmed' ? 'Prohlédnout archiv CFW' : 'Otevřít galerii ročníku'} <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}
+    {archiveHref && <a class="button" href={url(archiveHref)}>{event.archiveYear === event.year ? 'Otevřít galerii ročníku' : `Archiv CFW · ${event.archiveCity || event.city} ${event.archiveYear}`} <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}
     </dl></aside></section>
+  {event.gallery?.length && <section class="section container" style="padding-top:0" aria-labelledby="event-gallery-heading"><div class="section-heading"><div><p class="eyebrow">Z oficiálního webu</p><h2 class="section-title" id="event-gallery-heading">Pozvánka.<br />A tvář kolekce.</h2></div><p class="section-intro">Pozvánky a propagační fotografie zveřejněné pořadatelem k této události. Každý podklad má vlastní popisek a zdroj.</p></div><div class="event-official-gallery">{event.gallery.map(item => <figure class="reveal"><a href={url(item.src)} target="_blank" rel="noopener noreferrer" aria-label={`Zvětšit: ${item.alt}`}><img src={url(item.src)} alt={item.alt} width={item.width} height={item.height} loading="lazy" /></a><figcaption class="image-caption">{item.caption} <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">Zdroj CFW <Icon name="external" /></a></figcaption></figure>)}</div></section>}
 </Layout>
+<style>
+  .event-cover--document{height:auto;max-height:none;object-fit:contain;background:#fff}
+  .event-official-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:28px}
+  .event-official-gallery img{width:100%;height:auto}
+  .event-official-gallery .image-caption{font-size:13px;line-height:1.65}
+  .event-official-gallery .image-caption a{text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:760px){.event-official-gallery{grid-template-columns:1fr;gap:36px}}
+</style>

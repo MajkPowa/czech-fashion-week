@@ -133,7 +133,7 @@ export function initialiseMotion() {
             handled.delete(element);
             marked.delete(element);
           });
-          document.querySelectorAll<HTMLElement>('.archive-grid > .media-card').forEach((element, index) => {
+          document.querySelectorAll<HTMLElement>('.archive-grid > .media-card, .event-list > a').forEach((element, index) => {
             if (element.hidden) return;
             reveal(element, 'card', (index % (desktop ? 4 : 2)) * .035);
           });

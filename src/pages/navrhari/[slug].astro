@@ -5,15 +5,27 @@ import { designers } from '../../data/designers';
 import { collectionMedia } from '../../lib/content';
 import { url } from '../../lib/paths';
 import '../../styles/content.css';
-export function getStaticPaths() { return designers.map(designer => ({params:{slug:designer.slug},props:{designer}})); }
-const {designer}=Astro.props;
-const all=collectionMedia(designer.collectionMatchers);
-const photos=all.filter(m=>m.type==='photo');
-const hero=photos.find(m=>m.featured)||photos[0];
-const gallery=all.filter(m=>m.id!==hero?.id).slice(0,16);
-const collection=hero?.collection;
+export function getStaticPaths() { return designers.map(designer => ({ params: { slug: designer.slug }, props: { designer } })); }
+const { designer } = Astro.props;
+const all = collectionMedia(designer.collectionMatchers);
+const photos = all.filter(m => m.type === 'photo');
+const archiveHero = photos.find(m => m.featured) || photos[0];
+const image = designer.portrait || archiveHero;
+const gallery = (designer.portrait ? all : all.filter(m => m.id !== archiveHero?.id)).slice(0, 16);
+const collection = archiveHero?.collection;
 ---
 <Layout title={designer.name} active="navrhari" description={designer.bio}>
-  <section class="container"><nav class="breadcrumb" aria-label="Drobečková navigace" style="padding-top:35px"><a href={url('navrhari/')}>Návrháři</a><span>/</span><span>{designer.name}</span></nav><div class="designer-profile"><div class="image-frame">{hero&&<img src={url(hero.src)} alt={hero.alt} width={hero.width} height={hero.height} loading="eager" />}</div><div><p class="eyebrow">{designer.category}</p><h1>{designer.name}</h1><p class="section-intro">{designer.bio}</p><p class="profile-description">{designer.description}</p><p class="years">Doložené ročníky / {designer.years.join(' · ')}</p>{collection&&<a class="text-link" href={url(`archiv/?collection=${encodeURIComponent(collection)}`)}>Vstoupit do kolekcí <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}</div></div>{hero&&<p class="image-caption">{hero.city} / {hero.year}<span>{hero.credit}</span></p>}</section>
-  <section class="section container"><div class="section-heading"><div><p class="eyebrow">Vybrané momenty</p><h2 class="section-title">Tvorba v obraze.</h2></div><p class="section-intro">Fotografie a záznamy z jednotlivých ročníků. Otevřete detail a objevte celý přehlídkový kontext.</p></div><div class="profile-gallery">{gallery.map(item=><a href={url(`media/${item.id}/`)}>{item.type==='video' ? <video data-video-autoplay data-video-src={url(item.src)} poster={url(item.poster || item.thumb)} muted loop playsinline preload="none" width={item.width} height={item.height} aria-hidden="true" tabindex="-1" disablepictureinpicture /> : <img src={url(item.thumb)} alt={item.alt} width={item.width} height={item.height} loading="lazy" />}<p class="media-year">{item.year} / {item.city}{item.type==='video'&&' / Video'}</p></a>)}</div><div style="margin-top:45px"><a class="text-link" href={url('archiv/')}>Prozkoumat celý archiv <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></section>
+  <section class="container">
+    <nav class="breadcrumb" aria-label="Drobečková navigace" style="padding-top:35px"><a href={url('navrhari/')}>Návrháři</a><span>/</span><span>{designer.name}</span></nav>
+    <div class="designer-profile">
+      <div class="image-frame" style={designer.portrait ? 'aspect-ratio:1' : undefined}>{image && <img src={url(image.src)} alt={image.alt} width={image.width} height={image.height} loading="eager" />}</div>
+      <div><p class="eyebrow">{designer.category}</p><h1>{designer.name}</h1><p class="section-intro">{designer.bio}</p><p class="profile-description">{designer.description}</p>{designer.years.length > 0 && <p class="years">Doložené ročníky / {designer.years.join(' · ')}</p>}{collection && <a class="text-link" href={url(`archiv/?collection=${encodeURIComponent(collection)}`)}>Vstoupit do kolekcí <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}</div>
+    </div>
+    {designer.portrait ? <p class="image-caption">Fotografie z <a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">oficiálního přehledu návrhářů CFW</a>.</p> : archiveHero && <p class="image-caption">Archivní fotografie kolekce / {archiveHero.city} / {archiveHero.year}<span>{archiveHero.credit}</span></p>}
+  </section>
+  {gallery.length > 0 && <section class="section container">
+    <div class="section-heading"><div><p class="eyebrow">Vybrané momenty</p><h2 class="section-title">Tvorba v obraze.</h2></div><p class="section-intro">Fotografie a záznamy z jednotlivých ročníků. Otevřete detail a objevte celý přehlídkový kontext.</p></div>
+    <div class="profile-gallery">{gallery.map(item => <a href={url(`media/${item.id}/`)}>{item.type === 'video' ? <video data-video-autoplay data-video-src={url(item.src)} poster={url(item.poster || item.thumb)} muted loop playsinline preload="none" width={item.width} height={item.height} aria-hidden="true" tabindex="-1" disablepictureinpicture /> : <img src={url(item.thumb)} alt={item.alt} width={item.width} height={item.height} loading="lazy" />}<p class="media-year">{item.year} / {item.city}{item.type === 'video' && ' / Video'}</p></a>)}</div>
+    <div style="margin-top:45px"><a class="text-link" href={url('archiv/')}>Prozkoumat celý archiv <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div>
+  </section>}
 </Layout>

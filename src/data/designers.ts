@@ -1,3 +1,11 @@
+export interface DesignerPortrait {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  sourceUrl: string;
+}
+
 export interface Designer {
   slug: string;
   name: string;
@@ -9,9 +17,98 @@ export interface Designer {
   collectionMatchers: string[];
   source: string;
   sourceUrl: string;
+  portrait?: DesignerPortrait;
+  listedOnOfficialSite?: boolean;
 }
 
-export const designers: Designer[] = [
+export const officialDesignerPortraits: Record<string, DesignerPortrait> = {
+  "osmany-laffita": {
+    "src": "official/designers/osmany-laffita.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Osmany Laffita – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Osmany.png"
+  },
+  "cleofe-finati": {
+    "src": "official/designers/cleofe-finati.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Cleofe Finati – oficiální snímek pánské kolekce z webu CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/07/Cleofe-Finati-czech-fashion-week.png"
+  },
+  "jitka-klett": {
+    "src": "official/designers/jitka-klett.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Jitka Klett – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Jitka-Klett.png"
+  },
+  "jiri-moravec": {
+    "src": "official/designers/jiri-moravec.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Jiří Moravec – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_JIRI_MORAVEC.png"
+  },
+  "ludek-hanak": {
+    "src": "official/designers/ludek-hanak.webp",
+    "width": 500,
+    "height": 500,
+    "alt": "Luděk Hanák – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/07/ludek-hana.png"
+  },
+  "jirina-matousova": {
+    "src": "official/designers/jirina-matousova.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Jiřina Matoušová – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_JIRINA_MATOUSOVA.png"
+  },
+  "helena-bedrnova": {
+    "src": "official/designers/helena-bedrnova.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Helena Bedrnová – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/CFW_Helena_Bedrnova.png"
+  },
+  "nada-moravcova": {
+    "src": "official/designers/nada-moravcova.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Naďa Moravcová – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_NADA_MORAVCOVA.png"
+  },
+  "gabriela-giotto": {
+    "src": "official/designers/gabriela-giotto.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Gabriela Giotto – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_GABRIELA_GIOTTO.png"
+  },
+  "lilian-augustin": {
+    "src": "official/designers/lilian-augustin.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Lilian Augustin – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Lilian_Augustin.png"
+  },
+  "anna-anna": {
+    "src": "official/designers/anna-anna.webp",
+    "width": 800,
+    "height": 800,
+    "alt": "Anna Anna – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Anna_Anna.png"
+  },
+  "debbie-brown": {
+    "src": "official/designers/debbie-brown.webp",
+    "width": 500,
+    "height": 500,
+    "alt": "Debbie Brown – oficiální fotografie z přehledu návrhářů CFW",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/DEBBIE_BROWN.png"
+  }
+};
+
+const catalogue: Designer[] = [
   {
     slug: 'jitka-klett', name: 'Jitka Klett', category: 'Autorská móda',
     bio: 'V archivním výběru se její tvorba představuje v pohybu lehkých vrstev, výrazných barev a společenských siluet.',
@@ -82,4 +179,51 @@ export const designers: Designer[] = [
     years: [2024], collections: ['Anna Anna'], collectionMatchers: ['anna anna', 'annaanna'],
     source: 'Zdrojové album Brno 2024; jméno také na oficiálním webu CFW.', sourceUrl: 'https://cfw.cz/',
   },
+  {
+    "slug": "jirina-matousova",
+    "name": "Jiřina Matoušová",
+    "category": "Autorská móda",
+    "bio": "Jiřina Matoušová patří k osobnostem představeným v oficiálním přehledu návrhářů Czech Fashion Week.",
+    "description": "Osobnost módní tvorby prezentovaná na oficiálním webu CFW. Kolekce a potvrzenou účast u konkrétních událostí představuje jejich program.",
+    "years": [],
+    "collections": [],
+    "collectionMatchers": [],
+    "source": "Oficiální přehled Návrháři na CFW, ověřeno 20. října 2026.",
+    "sourceUrl": "https://cfw.cz/"
+  },
+  {
+    "slug": "lilian-augustin",
+    "name": "Lilian Augustin",
+    "category": "Autorská móda",
+    "bio": "Lilian Augustin patří k osobnostem představeným v oficiálním přehledu návrhářů Czech Fashion Week.",
+    "description": "Osobnost módní tvorby prezentovaná na oficiálním webu CFW. Kolekce a potvrzenou účast u konkrétních událostí představuje jejich program.",
+    "years": [],
+    "collections": [],
+    "collectionMatchers": [],
+    "source": "Oficiální přehled Návrháři na CFW, ověřeno 20. října 2026.",
+    "sourceUrl": "https://cfw.cz/"
+  },
+  {
+    "slug": "debbie-brown",
+    "name": "Debbie Brown",
+    "category": "Autorská móda",
+    "bio": "Debbie Brown patří k osobnostem představeným v oficiálním přehledu návrhářů Czech Fashion Week.",
+    "description": "Osobnost módní tvorby prezentovaná na oficiálním webu CFW. Kolekce a potvrzenou účast u konkrétních událostí představuje jejich program.",
+    "years": [],
+    "collections": [],
+    "collectionMatchers": [],
+    "source": "Oficiální přehled Návrháři na CFW, ověřeno 20. října 2026.",
+    "sourceUrl": "https://cfw.cz/"
+  },
 ];
+
+const officialOrder = ["osmany-laffita", "cleofe-finati", "jitka-klett", "jiri-moravec", "ludek-hanak", "jirina-matousova", "helena-bedrnova", "nada-moravcova", "gabriela-giotto", "lilian-augustin", "anna-anna", "debbie-brown"];
+
+export const designers: Designer[] = catalogue.map(designer => ({
+  ...designer,
+  portrait: officialDesignerPortraits[designer.slug],
+  listedOnOfficialSite: Boolean(officialDesignerPortraits[designer.slug]),
+})).sort((a, b) => {
+  const position = (slug: string) => { const index = officialOrder.indexOf(slug); return index < 0 ? officialOrder.length : index; };
+  return position(a.slug) - position(b.slug);
+});

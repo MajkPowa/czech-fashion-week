@@ -1,0 +1,10 @@
+---
+import { personalNote } from '../data/official';
+import { url } from '../lib/paths';
+import Icon from './Icon.astro';
+import '../styles/official.css';
+---
+<section class="section container personal-note" id="osobni-slovo" aria-labelledby="personal-note-title">
+  <figure class="personal-note-portrait reveal"><img src={url(personalNote.portrait)} width={personalNote.width} height={personalNote.height} alt="Ing. Jiří Morštadt – portrét z oficiálního webu Czech Fashion Week" loading="lazy" /><figcaption class="image-caption">Ing. Jiří Morštadt / Czech Fashion Week</figcaption></figure>
+  <div class="personal-note-copy reveal"><p class="eyebrow">Osobní slovo</p><h2 id="personal-note-title">Za módou<br />jsou lidé.</h2>{personalNote.paragraphs.map(paragraph => <p>{paragraph}</p>)}<div class="personal-note-signature"><strong>{personalNote.name}</strong><span>Czech Fashion Week</span></div><a class="personal-note-source" href={personalNote.sourceUrl} target="_blank" rel="noopener noreferrer">Podle osobního slova na oficiálním webu <Icon name="external" /></a></div>
+</section>

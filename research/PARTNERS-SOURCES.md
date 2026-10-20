@@ -1,4 +1,78 @@
-# Partneři a loga z prezentace CFW 2025
+# Partneři a autentická loga CFW
+
+## Oficiální web: přehled ověřený 20. 10. 2026
+
+[Oficiální homepage CFW](https://cfw.cz/) uvádí **15 hlavních položek a 34 dalších položek**, celkem **49 log**. Jednou položkou druhé skupiny je vlastní značka Czech Fashion Week, v našem přehledu označená jako pořadatel. Jde tedy o **48 externích značek a pořadatele**, nikoli o 49 externích partnerů.
+
+Všechny soubory byly stažené přímo z HTML partnerské sekce, včetně původních odkazů na weby značek. Toto zařazení neznamená automaticky podporu každé jednotlivé budoucí akce. Partnerské logo u ministerstva nebo města nezaměňujeme za oficiální záštitu konkrétního termínu.
+
+- `officialPartners`: 49 položek, rozdělení 15 / 34 shodné s webem.
+- `public/partners/official/`: 49 PNG a auditní `manifest.json` s URL, rozměry a SHA-256.
+- Původní stažené soubory jsou archivované také v lokálním výzkumném adresáři mimo veřejný repozitář.
+- Pro sedm původních souborů větších než 707 px se publikuje přímo odpovídající menší PNG z oficiálního `srcset`; nebylo provedeno vlastní překreslení, přebarvení ani generativní doplnění.
+- Původní podoba log včetně jejich černých podkladů zůstala zachovaná. PNG se proto zobrazují v tmavých kartách, bez CSS filtrů a barevných inverzí.
+- Historických 43 značek a tři celé partnerské panely z prezentace zůstávají v rozbalitelném přehledu. Aktuální a historický kontext se zobrazují odděleně.
+
+| Položka | Skupina ve zdroji | Publikovaný soubor | Přímý asset CFW |
+|---|---|---|---|
+| ABF | Hlavní partneři akcí | `partners/official/abf.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_ABF.png) |
+| PVA EXPO PRAHA | Hlavní partneři akcí | `partners/official/pva-expo.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_PVA.png) |
+| Clarion Congress Hotel Brno | Hlavní partneři akcí | `partners/official/clarion-brno.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_CHB.png) |
+| Spolek Mariánské Lázně | Hlavní partneři akcí | `partners/official/spolek-ml.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_SML.png) |
+| BYD | Hlavní partneři akcí | `partners/official/byd.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_BYD.png) |
+| HDT | Hlavní partneři akcí | `partners/official/hdt.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_HDT.png) |
+| Kinley | Hlavní partneři akcí | `partners/official/kinley.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_KINLEY.png) |
+| Jihomoravský kraj | Hlavní partneři akcí | `partners/official/jihomoravsky-kraj.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/06/LOGO_CFW_JIHOMORAVSKY_KRAJ.png) |
+| Kooperativa | Hlavní partneři akcí | `partners/official/kooperativa.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_KOOPERATIVA_CFW.png) |
+| Košík.cz | Hlavní partneři akcí | `partners/official/kosik.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/07/LOGO_CFW_KOSIK.png) |
+| Brno | Hlavní partneři akcí | `partners/official/brno.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/06/LOGO_CFW_BRNO.png) |
+| Motorola | Hlavní partneři akcí | `partners/official/motorola.png` | [PNG](https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1-kopie-2-500x500.png) |
+| Sev.en Česká energie | Hlavní partneři akcí | `partners/official/seven.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/06/LOGO_7.png) |
+| STYL · KABO | Hlavní partneři akcí | `partners/official/styl-kabo.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/08/CFW-styl_kabo.png) |
+| Veletrhy Brno | Hlavní partneři akcí | `partners/official/veletrhy-brno.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_VB.png) |
+| Kapitán Praha | Partneři akcí | `partners/official/kapitan.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/08/CFW_KAPITAN.png) |
+| IP Beauty Lounge | Partneři akcí | `partners/official/ip-beauty.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/08/LOGO_IP_BEAUTY.png) |
+| ŽENA-IN | Partneři akcí | `partners/official/zena-in.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_ZIN.png) |
+| Vinařství Kněží hora | Partneři akcí | `partners/official/knezi-hora.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_KHVB.png) |
+| TCR Security | Partneři akcí | `partners/official/tcr-security.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_TCR.png) |
+| Mariánské Lázně | Partneři akcí | `partners/official/marianske-lazne.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_ML.png) |
+| SPGroup | Partneři akcí | `partners/official/spgroup.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_SPG.png) |
+| Růže Michael | Partneři akcí | `partners/official/ruze-michael.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_RM.png) |
+| Ministerstvo průmyslu a obchodu ČR | Partneři akcí | `partners/official/mpo.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_MPAO.png) |
+| LSK Green Group | Partneři akcí | `partners/official/lsk-green.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_LSK.png) |
+| Hospodářská komora Praha Jihozápad | Partneři akcí | `partners/official/hkpjz.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_HK.png) |
+| Deliberti | Partneři akcí | `partners/official/deliberti.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_DELIBERTI.png) |
+| Beskydská brána | Partneři akcí | `partners/official/beskydska-brana.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_BB.png) |
+| Automyčka Express | Partneři akcí | `partners/official/automycka.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/07/LOGO_AUTO_MYCKA.png) |
+| Aukční dům Weinberg | Partneři akcí | `partners/official/weinberg.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/05/LOGO-WEINBERG.png) |
+| Smartwings | Partneři akcí | `partners/official/smartwings.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/09/CFW_LOGO_SMARTWINGS-300x300-1.png) |
+| BANDI | Partneři akcí | `partners/official/bandi.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/08/CFW_LOGO_BANDI.png) |
+| Kytka jako Brno | Partneři akcí | `partners/official/kytka-jako-brno.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/08/CFW_LOGO_KYTKA_JAKO_BRNO.png) |
+| Quality Hotel Brno Exhibition Centre | Partneři akcí | `partners/official/quality-brno.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/08/CFW_LOGO_QAULITY_HOTEL_BRNO.png) |
+| JP Servis | Partneři akcí | `partners/official/jp-servis.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/08/CFW_LOGO_JPSERVIS.png) |
+| Make-Up Institute Prague | Partneři akcí | `partners/official/makeup-institute.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/08/CFW-Kame_up.png) |
+| Letiště Praha | Partneři akcí | `partners/official/letiste-praha.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/07/LOGO_CFW_LP.png) |
+| Medik8 | Partneři akcí | `partners/official/medik8.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/07/LOGO_CFW_MEDIK8_R.png) |
+| Zinzino | Partneři akcí | `partners/official/zinzino.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/07/LOGO_CFW_ZINZINO_20.png) |
+| naturbeds | Partneři akcí | `partners/official/naturbeds.png` | [PNG](https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1-kopie-26-500x500.png) |
+| Anna Brandejs | Partneři akcí | `partners/official/anna-brandejs.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/05/LOGO_CFW_ANNA_BRANDEJS-500x500.png) |
+| Sothys Paris | Partneři akcí | `partners/official/sothys.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/05/LOGO_CFW_SOTHYS-500x500.png) |
+| Tomáš Arsov | Partneři akcí | `partners/official/tomas-arsov.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/05/LOGO_CFW_TOMAS_ARSOV-500x500.png) |
+| Regionální noviny | Partneři akcí | `partners/official/regionalni-noviny.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/05/LOGO_CFW_REGIONALNI_NOVINY-500x500.png) |
+| Czech Fashion Week · pořadatel | Partneři akcí | `partners/official/cfw.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/05/LOGO_CFW_CFW-500x500.png) |
+| Chateau St. Havel | Partneři akcí | `partners/official/st-havel.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/06/LOGO_CFW_ST_HAVEL.png) |
+| Nadační fond Max Fitness | Partneři akcí | `partners/official/nf-max-fitness.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/06/LOGO_CFW_MAX_FITNESS_NADACE.png) |
+| Max Fitness | Partneři akcí | `partners/official/max-fitness.png` | [PNG](https://cfw.cz/wp-content/uploads/2025/06/LOGO_CFW_MAX_FITNESS.png) |
+| U Matěje Kotrby | Partneři akcí | `partners/official/u-mateje.png` | [PNG](https://cfw.cz/wp-content/uploads/2026/08/LOGO_U_MATEJE.png) |
+
+### Kontrola nového importu
+
+Všech 49 PNG prošlo dekódováním, rozměry odpovídají datům a SHA-256 odpovídá přímému stažení. Celá sada byla vizuálně zkontrolovaná na kontaktním archu. Identitu potvrzuje čitelná kresba a cílový odkaz z oficiálního HTML; v této nové sadě nezůstává žádný neidentifikovaný monogram. Celková velikost publikovaných PNG je 734 840 B.
+
+---
+
+## Historické podklady z prezentace CFW 2025
+
 
 Zdroj: uživatelem dodaný soubor `CFW 2025_Prezentace.pdf`. Číslování níže je pořadí PDF stran. Export je obrazovou reprodukcí značek, není potvrzením spolupráce pro nový ročník.
 
