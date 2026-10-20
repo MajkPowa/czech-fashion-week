@@ -61,7 +61,7 @@ PDF strana 7 uvádí reklamní a komunikační kanály plánu kampaně 2025. Nen
 
 ## Další výskyty
 
-PDF strana 18 ukazuje realizace partnerství v roce 2024, historické instagramové příspěvky, produktové aktivace a fotografie logostěn. Drobné značky uvnitř fotografií nejsou automaticky označeny za další potvrzené partnery. Samostatný úplný přehled všech 22 partnerských log z výslovně nadepsané strany 5 je publikovaný bez vynechání.
+PDF strana 18 je výslovně nadepsaná „Prezentace partnerů Czech Fashion Week 2024“. Nad rámec 22 značek z hlavní stěny je v samostatném exportu `realisationPartners2024` doloženo dalších 13 čitelných značek. Jde o historickou realizaci 2024, nikoliv o aktuální podporu budoucího ročníku. Všechny původní, včetně nečitelných drobných značek, zachovávají 3 celé partnerské panely v `realisationPanels2024`.
 
 ## Kontrola
 
@@ -69,3 +69,45 @@ PDF strana 18 ukazuje realizace partnerství v roce 2024, historické instagramo
 - Všechny cesty v `partners` existují, rozměry dat odpovídají souborům.
 - Celý soubor `partners` má 30 jedinečných ID; rozdělení 8 / 14 / 8.
 - Značky nejsou přebarvené, znovu vysázené ani překreslené AI.
+
+## Realizace partnerství 2024: doplněk ze strany 18
+
+13 samostatných doplňkových značek, bez změny původních 22 partnerů a 8 záštit.
+
+| Značka | Podoba / asset source | Důkaz historické role |
+|---|---|---|
+| SAN GIACOMO | Přesný výřez loga z PDF | PDF 18, partnerský panel 2024 |
+| Anna Brandejs | https://cfw.cz/wp-content/uploads/2024/11/anna-brandejs.png | PDF 18, partnerský panel 2024 |
+| XPEL | https://lp.xpel.com/hubfs/XPEL.svg?hsLang=en | PDF 18, partnerský panel 2024 |
+| Brixton | Přesný výřez loga z PDF | PDF 18, partnerský panel 2024 |
+| Finlandia | Přesný výřez loga z PDF | PDF 18, partnerský panel 2024 |
+| Bombay Sapphire | Přesný výřez loga z PDF | PDF 18, partnerský panel 2024 |
+| Jack Daniel’s | Přesný výřez loga z PDF | PDF 18, partnerský panel 2024 |
+| Winning Group | https://www.winninggroup.cz/wp-content/themes/winning-group/assets/images/winning-logo.svg | PDF 18, partnerský panel 2024 |
+| X-DIGR | https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1-kopie-36.png | PDF 18, partnerský panel 2024 |
+| rokomotor | https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1.png | PDF 18, partnerský panel 2024 |
+| Michal Hašek · advokát | https://cfw.cz/wp-content/uploads/2024/08/Kreslici-platno-1-kopie-25-1.png | PDF 18, partnerský panel 2024 |
+| mu:Rum | https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1-kopie-3.png | PDF 18, partnerský panel 2024 |
+| STYL · KABO | https://cfw.cz/wp-content/uploads/2025/08/CFW-styl_kabo.png | PDF 18, partnerský panel 2024 |
+
+- SAN GIACOMO a Brixton jsou přepsané pouze podle čitelného názvu na panelu. Není jim přiřazený neověřený web nebo rozvinutý název firmy; podobně pojmenované současné značky nebyly použity jako náhrada.
+- XPEL a Winning Group používají shodné oficiální vektorové logotypy, v pozitivní variantě na bílém podkladu. U XPEL je pouze zmenšený SVG viewBox kolem existující kresby; její tvar ani barvy se nemění.
+- Anna Brandejs, X-DIGR, rokomotor, Michal Hašek a mu:Rum používají ostré původní assety z veřejného mediálního archivu CFW nahrané v roce 2024; shoda s logy na straně 18 je vizuálně ověřená. STYL · KABO používá stejnou značku z oficiálního CFW downloadu; historickou vazbu dokládá přímo panel 2024.
+- Zbývajících 5 značek (SAN GIACOMO, Brixton, Finlandia, Bombay Sapphire, Jack Daniel’s) zachovává přesný výřez z dokumentu. Kresba je v PDF velmi malá a její ostrost je omezená zdrojem. Nahrazení stejně pojmenovanou, ale odlišnou variantou loga nebylo provedeno. Žádná AI rekonstrukce ani překreslení.
+- `tone: dark` označuje originální bílé značky na černé ploše. `tone: light` je u pozitivních vektorů XPEL a Winning Group.
+
+### Úplné partnerské panely a nečitelné oblasti
+
+1. Horní řada: CFW (vlastní značka), Motorola, SEVEN, známý monogram AS, mu:Rum. Dolní pásy: nečitelný rukopisný wordmark; Medik8; nečitelný motiv oblouku/budovy; rokomotor; Quality; Michal Hašek; Karlín Port; SAN GIACOMO; Tomáš Arsov; naturbeds; Magnum; nečitelný wordmark; ANNA BRANDEJS.
+2. Prostřední řada: Winning Group; X-DIGR; Jack Daniel’s; drobný kulatý znak; navazující nečitelný wordmark; Coca-Cola; Bombay Sapphire; drobný erb s nečitelným textem; opakovaný motiv oblouku/budovy; STYL · KABO; Brno; XPEL; Finlandia; Brixton. Dolní pás opakuje spodní pás první řady.
+3. Spodní řada: opakuje horní pás prostřední řady.
+
+Šest nečitelných oblastí není automaticky označených jako šest různých firem; některé mohou být části složených značek. Celé původní panely je zachovávají bez vynechání a bez domýšlení identity. Barvy a motivy uvnitř zdrojových výřezů nebyly upravované.
+
+### Finální kontrola doplňku
+
+- `partners`: 30 (22 partnerů + 8 záštit) beze změn.
+- `realisationPartners2024`: 13 dalších jedinečných značek.
+- `realisationPanels2024`: 3 úplné původní panely.
+- Celkem 43 značek plus 3 obrazové panely, 46 veřejných souborů.
+- Všechny assety dekódované, rozměry/cesty ověřené; typové definice oddělují historickou skupinu `realisation2024`.

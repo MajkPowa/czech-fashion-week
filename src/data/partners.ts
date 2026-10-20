@@ -1,12 +1,13 @@
 /** Authentic marks from the supplied CFW 2025 presentation.
  * Historical support is not confirmation of partnership for a future edition.
  */
-export type PartnerCategory = 'main' | 'supporting' | 'patronage';
+export type PartnerCategory = 'main' | 'supporting' | 'patronage' | 'realisation2024';
 export interface Partner {
   id: string; name: string; logo: string; width: number; height: number; alt: string;
   category: PartnerCategory; sourcePage: number; sourceLabel: string;
   identification: 'source-logo' | 'unidentified-monogram';
   sourceUrl?: string;
+  tone?: 'light' | 'dark';
 }
 export type MediaCategory = 'social' | 'internet' | 'outdoor' | 'print' | 'digital' | 'radio' | 'television';
 export interface MediaChannel {
@@ -614,5 +615,210 @@ export const mediaChannels: MediaChannel[] = [
     "category": "television",
     "sourcePage": 7,
     "sourceLabel": "Prezentace CFW 2025, strana 7 / plán kampaně 2025"
+  }
+];
+
+/** Additional marks documented on the 2024 partnership realisation slide. */
+export const realisationPartners2024: Partner[] = [
+  {
+    "id": "2024-san-giacomo",
+    "name": "SAN GIACOMO",
+    "logo": "partners/2024-san-giacomo.webp",
+    "width": 384,
+    "height": 96,
+    "alt": "Logo SAN GIACOMO z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark"
+  },
+  {
+    "id": "2024-anna-brandejs",
+    "name": "Anna Brandejs",
+    "logo": "partners/2024-anna-brandejs.webp",
+    "width": 1032,
+    "height": 252,
+    "alt": "Logo Anna Brandejs z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/11/anna-brandejs.png"
+  },
+  {
+    "id": "2024-xpel",
+    "name": "XPEL",
+    "logo": "partners/2024-xpel.svg",
+    "width": 1044,
+    "height": 286,
+    "alt": "Logo XPEL z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "light",
+    "sourceUrl": "https://lp.xpel.com/hubfs/XPEL.svg?hsLang=en"
+  },
+  {
+    "id": "2024-brixton",
+    "name": "Brixton",
+    "logo": "partners/2024-brixton.webp",
+    "width": 320,
+    "height": 120,
+    "alt": "Logo Brixton z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark"
+  },
+  {
+    "id": "2024-finlandia",
+    "name": "Finlandia",
+    "logo": "partners/2024-finlandia.webp",
+    "width": 256,
+    "height": 120,
+    "alt": "Logo Finlandia z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark"
+  },
+  {
+    "id": "2024-bombay-sapphire",
+    "name": "Bombay Sapphire",
+    "logo": "partners/2024-bombay-sapphire.webp",
+    "width": 232,
+    "height": 120,
+    "alt": "Logo Bombay Sapphire z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark"
+  },
+  {
+    "id": "2024-jack-daniels",
+    "name": "Jack Daniel’s",
+    "logo": "partners/2024-jack-daniels.webp",
+    "width": 264,
+    "height": 120,
+    "alt": "Logo Jack Daniel’s z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark"
+  },
+  {
+    "id": "2024-winning-group",
+    "name": "Winning Group",
+    "logo": "partners/2024-winning-group.svg",
+    "width": 285,
+    "height": 40,
+    "alt": "Logo Winning Group z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "light",
+    "sourceUrl": "https://www.winninggroup.cz/wp-content/themes/winning-group/assets/images/winning-logo.svg"
+  },
+  {
+    "id": "2024-xdigr",
+    "name": "X-DIGR",
+    "logo": "partners/2024-xdigr.webp",
+    "width": 601,
+    "height": 532,
+    "alt": "Logo X-DIGR z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1-kopie-36.png"
+  },
+  {
+    "id": "2024-rokomotor",
+    "name": "rokomotor",
+    "logo": "partners/2024-rokomotor.webp",
+    "width": 1032,
+    "height": 223,
+    "alt": "Logo rokomotor z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1.png"
+  },
+  {
+    "id": "2024-michal-hasek",
+    "name": "Michal Hašek · advokát",
+    "logo": "partners/2024-michal-hasek.webp",
+    "width": 741,
+    "height": 166,
+    "alt": "Logo Michal Hašek · advokát z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/08/Kreslici-platno-1-kopie-25-1.png"
+  },
+  {
+    "id": "2024-murum",
+    "name": "mu:Rum",
+    "logo": "partners/2024-murum.webp",
+    "width": 1032,
+    "height": 531,
+    "alt": "Logo mu:Rum z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/08/cfw-loga-fullhd_Kreslici-platno-1-kopie-3.png"
+  },
+  {
+    "id": "2024-styl-kabo",
+    "name": "STYL · KABO",
+    "logo": "partners/2024-styl-kabo.webp",
+    "width": 645,
+    "height": 297,
+    "alt": "Logo STYL · KABO z realizace partnerství CFW 2024",
+    "category": "realisation2024",
+    "sourcePage": 18,
+    "sourceLabel": "Prezentace CFW 2025, strana 18 / realizace partnerství 2024",
+    "identification": "source-logo",
+    "tone": "dark",
+    "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW-styl_kabo.png"
+  }
+];
+
+export const realisationPanels2024: Array<{id: string; src: string; width: number; height: number; alt: string}> = [
+  {
+    "id": "2024-panel-01",
+    "src": "partners/2024-panel-01.webp",
+    "width": 1956,
+    "height": 212,
+    "alt": "Partnerský panel CFW 2024 – řada 1 historické prezentace s původními logy"
+  },
+  {
+    "id": "2024-panel-02",
+    "src": "partners/2024-panel-02.webp",
+    "width": 1956,
+    "height": 220,
+    "alt": "Partnerský panel CFW 2024 – řada 2 historické prezentace s původními logy"
+  },
+  {
+    "id": "2024-panel-03",
+    "src": "partners/2024-panel-03.webp",
+    "width": 1956,
+    "height": 136,
+    "alt": "Partnerský panel CFW 2024 – řada 3 historické prezentace s původními logy"
   }
 ];
