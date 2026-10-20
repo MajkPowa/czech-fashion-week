@@ -14,7 +14,7 @@ npm run build
 npm run preview
 ```
 
-Projekt je nastaven na cestu `/czech-fashion-week/`. Výstup je v `dist/`; GitHub Actions jej po pushi do main publikuje na Pages.
+Produkční doména je `https://cfw.cz/` a web běží přímo v kořeni `/`. Výstup je v `dist/`; GitHub Actions jej po pushi do main publikuje na Pages. Nastavení DNS a postup přepnutí popisuje [produkční nasazení](research/PRODUCTION-DOMAIN.md).
 
 ## Obsah
 
@@ -25,7 +25,7 @@ Projekt je nastaven na cestu `/czech-fashion-week/`. Výstup je v `dist/`; GitHu
 - `public/media` — optimalizované webové deriváty; originální 21GB archiv není součást repozitáře.
 - `research/CONTENT-SOURCES.md` — obsahové podklady a ověření.
 
-Program byl ověřen 20.10.2026. Před dalším vydáním zkontrolujte aktuálnost budoucích událostí. Po datu konání změňte stav na `completed` a doplňte nový potvrzený program. Při změně názvu repozitáře upravte `base` v `astro.config.mjs`.
+Program byl ověřen 20.10.2026. Před dalším vydáním zkontrolujte aktuálnost budoucích událostí. Po datu konání změňte stav na `completed` a doplňte nový potvrzený program. Při změně domény upravte `site` v `astro.config.mjs` a vlastní doménu v nastavení GitHub Pages.
 
 Kontaktní formulář otevírá předvyplněný e-mail; nevyžaduje server, neukládá osobní údaje a sám zprávy neodesílá. Vstupenky zajišťuje ověřený externí prodejce. Historické fotografie nejsou označované jako dokumentace budoucí události.
 
@@ -41,7 +41,7 @@ Videa na úvodu, v náhledech archivu, na profilech návrhářů i v detailu se 
 
 Produkční stránky používají jednu lokálně uloženou rodinu **Onest Variable** pod licencí OFL. Základní velikost je 17 px s řádkováním 1,65; běžný text pracuje s 16–18 px, ovládání s 14 px a podpůrné popisky s 13 px. Hlavní řezy jsou 400 a 500. Výrazný kontrast vlasových tahů a kurziva předchozí Bodoni Moda se v důležitém textu ani ovládání nepoužívají.
 
-Výběr, ověření českých znaků, licence a omezení porovnání popisuje [analýza typografie](research/TYPOGRAPHY-ANALYSIS-v3.md). Pomocná stránka [`/design-system/`](https://majkpowa.github.io/czech-fashion-week/design-system/) nabízí interaktivní porovnání Onest, Geist, Plus Jakarta Sans a předchozí kombinace Bodoni Moda + Manrope na stejných českých textech. Stránka má `noindex` a není součástí hlavní navigace.
+Výběr, ověření českých znaků, licence a omezení porovnání popisuje [analýza typografie](research/TYPOGRAPHY-ANALYSIS-v3.md). Pomocná stránka [`/design-system/`](https://cfw.cz/design-system/) nabízí interaktivní porovnání Onest, Geist, Plus Jakarta Sans a předchozí kombinace Bodoni Moda + Manrope na stejných českých textech. Stránka má `noindex` a není součástí hlavní navigace.
 
 `src/components/Icon.astro` používá centrální sadu **38 vlastních SVG ikon** ze `src/lib/iconography.ts`. Šipky a ovládací symboly jsou vektorové cesty, nikoli znaky fontu; systémové emoji jejich vzhled neovlivní. Pravidla kresby, významy a použití dokumentuje [ikonografie](research/ICONOGRAPHY-v3.md).
 
