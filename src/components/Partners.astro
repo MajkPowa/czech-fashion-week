@@ -1,0 +1,32 @@
+---
+import { mainPartners, supportingPartners, patronages } from '../data/partners';
+import { url } from '../lib/paths';
+import Icon from './Icon.astro';
+import '../styles/partners.css';
+
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+const groups = [
+  { id: 'hlavni-partneri', label: 'Hlavní partneři předchozích ročníků', items: mainPartners, type: 'main' },
+  { id: 'dalsi-partneri', label: 'Další partneři předchozích ročníků', items: supportingPartners, type: 'supporting' },
+  ...(!compact ? [{ id: 'zastity', label: 'Záštity předchozích ročníků', items: patronages, type: 'patronage' }] : []),
+];
+---
+<section class:list={['section', 'partners-section', compact && 'partners-section--compact']} id="partneri" aria-labelledby="partners-heading">
+  <div class="container">
+    <header class="partners-heading reveal">
+      <div><p class="eyebrow">Síla spolupráce</p><h2 id="partners-heading">Za módou stojí<br /><em>silná spojení.</em></h2></div>
+      <p>Značky a instituce, které byly součástí příběhu Czech Fashion Week. Připomínáme partnery předchozích ročníků uvedené v prezentaci CFW 2025.</p>
+    </header>
+    {groups.map((group, index) => <div class:list={['partner-group', `partner-group--${group.type}`]} aria-labelledby={group.id}>
+      <div class="partner-group-heading"><h3 id={group.id}>{group.label}</h3><span aria-hidden="true">0{index + 1} / {String(group.items.length).padStart(2, '0')}</span></div>
+      <div class="partner-grid">
+        {group.items.map(partner => <figure class="partner-logo-card" data-partner={partner.id}>
+          <div class="partner-logo-image"><img src={url(partner.logo)} alt={partner.alt} width={partner.width} height={partner.height} loading="lazy" decoding="async" /></div>
+          <figcaption>{partner.identification === 'unidentified-monogram' ? 'Partnerský monogram' : partner.name}</figcaption>
+        </figure>)}
+      </div>
+    </div>)}
+    {compact && <div class="partners-more"><p>Česká móda vzniká díky společné energii.</p><a class="text-link" href={url('partnerstvi/#partneri')}>Partneři a záštity <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div>}
+  </div>
+</section>

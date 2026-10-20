@@ -1,0 +1,29 @@
+/* CFW: long stems, open heads and precise square-cut strokes. */
+.cf-icon {
+  display: inline-block;
+  width: var(--icon-size, 20px);
+  height: var(--icon-size, 20px);
+  flex-shrink: 0;
+  vertical-align: -.18em;
+  overflow: visible;
+  pointer-events: none;
+}
+.button .cf-icon, .text-link .cf-icon { vertical-align: middle; }
+.footer-invitation .cf-icon { --icon-size: clamp(42px, 6vw, 90px); }
+.footer-bottom .cf-icon { --icon-size: 14px; margin-left: 6px; }
+.footer-email .cf-icon { --icon-size: 16px; }
+.mobile-menu .cf-icon { --icon-size: 27px; }
+.menu-toggle-icon { display: inline-grid; place-items: center; width: 24px; height: 24px; }
+.menu-toggle-icon .cf-icon { --icon-size: 24px; grid-area: 1 / 1; vertical-align: middle; }
+.menu-toggle[aria-expanded="false"] .cf-icon--close,
+.menu-toggle[aria-expanded="true"] .cf-icon--menu { display: none; }
+.place-arrow .cf-icon, .row-arrow .cf-icon { --icon-size: 32px; }
+.scroll-cue .cf-icon { --icon-size: 26px; }
+.media-card-open .cf-icon { --icon-size: 22px; vertical-align: middle; }
+.media-card-film .cf-icon { --icon-size: 12px; vertical-align: middle; }
+.media-dialog-arrow .cf-icon { --icon-size: 26px; vertical-align: middle; }
+.media-dialog-top .cf-icon { --icon-size: 18px; vertical-align: middle; }
+.media-detail-top .cf-icon, .media-dialog-meta .cf-icon { --icon-size: 16px; }
+@media (max-width: 760px) {
+  .place-arrow .cf-icon, .row-arrow .cf-icon { --icon-size: 26px; }
+}

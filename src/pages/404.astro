@@ -1,6 +1,7 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import { url } from '../lib/paths';
 import '../styles/content.css';
 ---
-<Layout title="Stránka nebyla nalezena" noIndex><section class="container not-found"><div><p class="eyebrow">404 / Mimo přehlídkovou trasu</p><h1>Tudy příběh<br />nepokračuje.</h1><p style="margin-inline:auto;color:var(--muted)">Stránka nebo fotografie na této adrese není dostupná. Vraťte se k programu nebo prozkoumejte archiv.</p><div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap"><a class="button button--dark" href={url()}>Úvodní stránka ↗</a><a class="button" href={url('archiv/')}>Obrazový archiv ↗</a></div></div></section></Layout>
+<Layout title="Stránka nebyla nalezena" noIndex><section class="container not-found"><div><p class="eyebrow">404 / Mimo přehlídkovou trasu</p><h1>Tudy příběh<br />nepokračuje.</h1><p style="margin-inline:auto;color:var(--muted)">Stránka nebo fotografie na této adrese není dostupná. Vraťte se k programu nebo prozkoumejte archiv.</p><div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap"><a class="button button--dark" href={url()}>Úvodní stránka <Icon name="arrow-up-right" /></a><a class="button" href={url('archiv/')}>Obrazový archiv <Icon name="arrow-up-right" /></a></div></div></section></Layout>

@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import mediaData from '../data/media.json';
 import { url } from '../lib/paths';
 import '../styles/gallery.css';
@@ -45,7 +46,7 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
 
   <div class="archive-result-bar">
     <p data-gallery-count aria-live="polite" aria-atomic="true">{initialCount} záznamů v kurátorském výběru</p>
-    <button type="button" class="archive-reset" data-reset hidden>Zrušit filtry <span aria-hidden="true">↗</span></button>
+    <button type="button" class="archive-reset" data-reset hidden>Zrušit filtry <span aria-hidden="true"><Icon name="arrow-up-right" /></span></button>
   </div>
 
   <div class="archive-grid" data-gallery-grid>
@@ -53,9 +54,9 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
       <a class="media-card-link" href={url(`media/${item.id}/`)} data-open-media={item.id} aria-label={`${item.type === 'video' ? 'Přehrát film' : 'Otevřít fotografii'}: ${item.title}, ${item.year}`}>
         <div class="media-card-image">
           <img src={url(item.thumb)} alt={item.alt || item.title} width={item.width} height={item.height} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
-          <span class="media-card-fallback" hidden data-image-fallback>Obraz se nepodařilo načíst.<br />Otevřít detail <span aria-hidden="true">↗</span></span>
-          {item.type === 'video' && <span class="media-card-film"><span aria-hidden="true">▶</span> Film {time(item.duration)}</span>}
-          <span class="media-card-open" aria-hidden="true">↗</span>
+          <span class="media-card-fallback" hidden data-image-fallback>Obraz se nepodařilo načíst.<br />Otevřít detail <span aria-hidden="true"><Icon name="arrow-up-right" /></span></span>
+          {item.type === 'video' && <span class="media-card-film"><span aria-hidden="true"><Icon name="play" /></span> Film {time(item.duration)}</span>}
+          <span class="media-card-open" aria-hidden="true"><Icon name="arrow-up-right" /></span>
         </div>
         <div class="media-card-caption"><span>{item.year} / {item.city}</span><span>{item.collection || (item.type === 'video' ? 'Film z přehlídky' : 'Czech Fashion Week')}</span></div>
       </a>
@@ -66,23 +67,23 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
     <span class="eyebrow">V tomto výběru je zatím ticho</span>
     <h2>Začněte jiným pohledem.</h2>
     <p>Pro tuto kombinaci filtrů jsme nenašli žádná média. Zkuste jiný ročník, místo nebo kolekci.</p>
-    <button type="button" class="button button--dark" data-reset>Zobrazit celý archiv <span aria-hidden="true">↗</span></button>
+    <button type="button" class="button button--dark" data-reset>Zobrazit celý archiv <span aria-hidden="true"><Icon name="arrow-up-right" /></span></button>
   </div>
 
   <div class="archive-pagination" data-gallery-pagination hidden>
     <p data-gallery-progress></p>
-    <button class="button button--dark" type="button" data-load-more>Načíst další <span aria-hidden="true">↓</span></button>
+    <button class="button button--dark" type="button" data-load-more>Načíst další <span aria-hidden="true"><Icon name="arrow-down" /></span></button>
   </div>
 
   <dialog class="media-dialog" data-media-dialog aria-labelledby="cfw-media-title" aria-describedby="cfw-media-credit">
     <div class="media-dialog-shell">
-      <header class="media-dialog-top"><p data-dialog-location>Archiv Czech Fashion Week</p><button type="button" data-dialog-close aria-label="Zavřít detail média">Zavřít <span aria-hidden="true">×</span></button></header>
+      <header class="media-dialog-top"><p data-dialog-location>Archiv Czech Fashion Week</p><button type="button" data-dialog-close aria-label="Zavřít detail média">Zavřít <span aria-hidden="true"><Icon name="close" /></span></button></header>
       <div class="media-dialog-stage">
-        <button class="media-dialog-arrow media-dialog-arrow--previous" type="button" data-dialog-previous aria-label="Předchozí médium"><span aria-hidden="true">←</span></button>
+        <button class="media-dialog-arrow media-dialog-arrow--previous" type="button" data-dialog-previous aria-label="Předchozí médium"><span aria-hidden="true"><Icon name="arrow-left" /></span></button>
         <figure class="media-dialog-figure" data-dialog-body></figure>
-        <button class="media-dialog-arrow media-dialog-arrow--next" type="button" data-dialog-next aria-label="Další médium"><span aria-hidden="true">→</span></button>
+        <button class="media-dialog-arrow media-dialog-arrow--next" type="button" data-dialog-next aria-label="Další médium"><span aria-hidden="true"><Icon name="arrow-right" /></span></button>
       </div>
-      <footer class="media-dialog-caption"><div><p id="cfw-media-title" data-dialog-title></p><p id="cfw-media-credit" data-dialog-credit></p></div><div class="media-dialog-meta"><span data-dialog-count aria-live="polite"></span><a href={url('archiv/')} data-dialog-detail>Samostatný detail <span aria-hidden="true">↗</span></a></div></footer>
+      <footer class="media-dialog-caption"><div><p id="cfw-media-title" data-dialog-title></p><p id="cfw-media-credit" data-dialog-credit></p></div><div class="media-dialog-meta"><span data-dialog-count aria-live="polite"></span><a href={url('archiv/')} data-dialog-detail>Samostatný detail <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></footer>
     </div>
   </dialog>
   <script type="application/json" data-gallery-data set:html={JSON.stringify(media).replace(/</g, '\\u003c')} />

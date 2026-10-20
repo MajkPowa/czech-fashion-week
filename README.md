@@ -32,3 +32,11 @@ Kontaktní formulář otevírá předvyplněný e-mail; nevyžaduje server, neuk
 ## Média a reprodukovatelnost
 
 `scripts/prepare_media.py` vytvoří webové deriváty z lokálního zdrojového archivu. Publikované soubory jsou již připravené; pro běžný build není původní archiv potřeba. Při opakování importu používejte původní manifest a schválený výběr. Generované koncepční obrázky nejsou mezi publikovanými fotografiemi.
+
+## Typografie, ikony a partneři
+
+Titulky používají variabilní Bodoni Moda s optickou velikostí a pravou kurzivou; běžný text a navigace používají Manrope. Písma jsou uložená lokálně. Obě licence OFL jsou v `public/licenses`.
+
+`src/components/Icon.astro` obsahuje vlastní SVG ikonografii CFW. Šipky a ovládací symboly jsou vektorové cesty, nikoli znaky fontu; systémové emoji jejich vzhled neovlivní.
+
+`src/data/partners.ts` eviduje všech 22 partnerů a 8 záštit z prezentace CFW 2025, strany 5. `public/partners` obsahuje autentická loga; přesné zdroje a nahrazení dvou málo kvalitních bitmap oficiálními variantami dokumentuje `research/PARTNERS-SOURCES.md`. Hlavní stránka ukazuje všech 22 partnerů, stránka Partneři i osm historických záštit. Mediální kanály reklamní kampaně nejsou zaměňované za partnery.

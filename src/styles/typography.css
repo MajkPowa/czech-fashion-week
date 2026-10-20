@@ -1,0 +1,68 @@
+/* CFW typography: an expressive editorial voice, with quiet, legible UI. */
+:root {
+  --font-display: 'Bodoni Moda Variable', Didot, 'Times New Roman', serif;
+  --font-body: 'Manrope Variable', Arial, sans-serif;
+  font-family: var(--font-body);
+}
+
+body { font-family: var(--font-body); font-weight: 400; }
+body h1, body h2, body h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+
+body .hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(100px, 11.4vw, 172px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.05em;
+}
+body .hero-headline span { font-style: italic; margin-left: 7vw; }
+body .intro-statement h2 em, body .archive-intro h1 em { font-style: italic; }
+body .intro-statement h2 { font-size: clamp(38px, 4.7vw, 70px); line-height: 1.17; }
+body .section-title, body .archive-intro h1, body .page-hero h1,
+body .designer-profile h1, body .event-detail-title, body .partnership-hero h1,
+body .contact-heading h1, body .not-found h1, body .fashion-motion h2,
+body .archive-feature h2, body .partner-invitation h2, body .contact-panel h2 {
+  font-weight: 400;
+  letter-spacing: -.04em;
+  line-height: 1.06;
+}
+body .designer-editorial h3, body .designer-tile h2, body .event-row h3,
+body .benefit h3, body .charity-item h3, body .history-item h3, body .place h3 {
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.13;
+}
+body .footer-invitation, body .archive-feature-year,
+body .number, body .ribbon-date strong, body .event-row .event-year, body .history-item .history-year {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+body .archive-years a { font-family: var(--font-display); font-weight: 400; letter-spacing: -.025em; }
+body .archive-years a > span { font-family: var(--font-body); }
+body .contact-detail h2 { font-family: var(--font-body); font-weight: 600; }
+body .section-intro, body .intro-sub p { font-weight: 400; }
+.desktop-nav a, .header-contact { font-size: 12px; }
+.eyebrow { font-weight: 600; letter-spacing: .15em; }
+.mobile-menu a { font-family: var(--font-display); font-size: 32px; font-weight: 400; letter-spacing: -.02em; }
+.mobile-menu small { font-family: var(--font-body); }
+.mobile-menu { max-height: calc(100dvh - var(--header-height)); overflow-y: auto; }
+
+@media (max-width: 760px) {
+  body .hero-headline { font-size: clamp(86px, 20vw, 140px); line-height: .97; }
+  body .hero-headline span { margin-left: 9vw; }
+  body .intro-statement h2 { font-size: clamp(36px, 8.5vw, 56px); }
+  body .section-title { font-size: clamp(43px, 10.8vw, 65px); }
+  body .event-detail-title { font-size: clamp(48px, 12vw, 70px); }
+  body .partnership-hero h1, body .contact-heading h1 { font-size: clamp(49px, 12.7vw, 68px); }
+  body .designer-profile h1 { font-size: clamp(56px, 13vw, 76px); }
+  body .designer-tile h2 { font-size: clamp(25px, 6.4vw, 37px); }
+  body .footer-invitation { font-size: clamp(44px, 10.7vw, 70px); }
+}

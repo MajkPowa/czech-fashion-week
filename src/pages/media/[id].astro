@@ -1,4 +1,5 @@
 ---
+import Icon from '../../components/Icon.astro';
 import Layout from '../../layouts/Layout.astro';
 import mediaData from '../../data/media.json';
 import { url } from '../../lib/paths';
@@ -21,7 +22,7 @@ const minutes = item.duration ? `${Math.floor(item.duration / 60)}:${String(Math
       {item.type === 'video' ? <video controls playsinline preload="metadata" poster={url(item.poster || item.thumb)} width={item.width} height={item.height} aria-label={item.alt || item.title}><source src={url(item.src)} type="video/mp4" /><p>Prohlížeč nepodporuje přehrávání videa. <a href={url(item.src)}>Otevřít video</a></p></video> : <img src={url(item.src)} width={item.width} height={item.height} alt={item.alt || item.title} fetchpriority="high" decoding="async" />}
     </figure>
     <div class="media-detail-caption"><div><p class="eyebrow">{item.type === 'video' ? `FILM${minutes ? ` / ${minutes}` : ''}` : 'FOTOGRAFIE'} / {item.year}</p><h1>{item.collection || item.title}</h1><p>{item.title}</p></div><div class="media-detail-credits"><p>{item.city}</p><p>{item.credit || 'Archiv Czech Fashion Week'}</p>{item.photographer && <p>Autor: {item.photographer}</p>}<p>Historický záznam Czech Fashion Week.</p></div></div>
-    <nav class="media-detail-navigation" aria-label="Další média stejného ročníku"><a href={url(`media/${previous.id}/`)}><span aria-hidden="true">←</span> Předchozí médium</a><a href={url(`archiv/${item.year}/`)}>Celý ročník {item.year}</a><a href={url(`media/${next.id}/`)}>Další médium <span aria-hidden="true">→</span></a></nav>
+    <nav class="media-detail-navigation" aria-label="Další média stejného ročníku"><a href={url(`media/${previous.id}/`)}><span aria-hidden="true"><Icon name="arrow-left" /></span> Předchozí médium</a><a href={url(`archiv/${item.year}/`)}>Celý ročník {item.year}</a><a href={url(`media/${next.id}/`)}>Další médium <span aria-hidden="true"><Icon name="arrow-right" /></span></a></nav>
   </div>
 </Layout>
 
