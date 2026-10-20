@@ -1,3 +1,5 @@
+import { observeAutoplay } from './video';
+
 type Media = {
   id: string;
   type: 'photo' | 'video';
@@ -59,8 +61,24 @@ function initGallery(root: HTMLElement) {
   let activeId = '';
   let archiveContext: ArchiveContext | null = null;
   let searchTimer: ReturnType<typeof setTimeout> | undefined;
+  const previewCleanups = new Map<HTMLVideoElement, () => void>();
+  let releaseDialogVideo: (() => void) | undefined;
   const normalize = (value: string) => value.toLocaleLowerCase('cs-CZ').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const noun = (n: number) => n === 1 ? 'záznam' : n > 1 && n < 5 ? 'záznamy' : 'záznamů';
+
+  function syncPreviewVideos() {
+    previewCleanups.forEach((release, video) => {
+      if (dialog.open || video.closest<HTMLElement>('[data-media-card]')?.hidden || !video.isConnected) {
+        release();
+        previewCleanups.delete(video);
+      }
+    });
+    if (dialog.open) return;
+    cards.forEach(card => {
+      const video = card.querySelector<HTMLVideoElement>('video[data-gallery-preview]');
+      if (!card.hidden && video && !previewCleanups.has(video)) previewCleanups.set(video, observeAutoplay(video));
+    });
+  }
 
   function readLocation() {
     const params = new URLSearchParams(location.search);
@@ -90,6 +108,7 @@ function initGallery(root: HTMLElement) {
       && (!search || normalize(`${item.title} ${item.alt} ${item.collection || ''} ${item.city} ${item.year}`).includes(search)));
     const shown = new Set(filtered.slice(0, visible).map((item) => item.id));
     cards.forEach((card, id) => { card.hidden = !shown.has(id); });
+    syncPreviewVideos();
     const displayed = Math.min(visible, filtered.length);
     count.textContent = `${filtered.length} ${noun(filtered.length)} v kurátorském výběru`;
     progress.textContent = `Zobrazeno ${displayed} z ${filtered.length}`;
@@ -103,6 +122,7 @@ function initGallery(root: HTMLElement) {
       else link.removeAttribute('aria-current');
     });
     if (updateUrl) saveUrl();
+    document.dispatchEvent(new CustomEvent('cfw:gallery-render'));
   }
 
   function reset() {
@@ -120,6 +140,8 @@ function initGallery(root: HTMLElement) {
   }
 
   function clearMedia() {
+    releaseDialogVideo?.();
+    releaseDialogVideo = undefined;
     body.querySelectorAll('video').forEach((video) => { video.pause(); video.removeAttribute('src'); video.load(); });
     body.replaceChildren();
   }
@@ -139,9 +161,15 @@ function initGallery(root: HTMLElement) {
     element.setAttribute('width', String(item.width));
     element.setAttribute('height', String(item.height));
     if (element instanceof HTMLVideoElement) {
-      element.controls = true;
+      element.controls = false;
+      element.muted = true;
+      element.defaultMuted = true;
+      element.loop = true;
       element.playsInline = true;
-      element.preload = 'metadata';
+      element.preload = 'none';
+      element.dataset.videoAutoplay = '';
+      element.dataset.videoSrc = assetUrl(item.src);
+      element.disablePictureInPicture = true;
       element.poster = assetUrl(item.poster || item.thumb);
       element.setAttribute('aria-label', item.alt || item.title);
     } else {
@@ -149,6 +177,9 @@ function initGallery(root: HTMLElement) {
       element.decoding = 'async';
     }
     element.addEventListener('error', () => {
+      if (!element.isConnected) return;
+      releaseDialogVideo?.();
+      releaseDialogVideo = undefined;
       const message = document.createElement('p');
       message.className = 'media-load-error';
       message.append('Soubor se nepodařilo načíst. ');
@@ -158,13 +189,15 @@ function initGallery(root: HTMLElement) {
       message.append(link);
       body.replaceChildren(message);
     }, { once: true });
-    element.src = assetUrl(item.src);
+    if (!(element instanceof HTMLVideoElement)) element.src = assetUrl(item.src);
     body.append(element);
     if (!dialog.open) {
       document.documentElement.classList.add('media-view-open');
       dialog.showModal();
       closeButton.focus({ preventScroll: true });
     }
+    syncPreviewVideos();
+    if (element instanceof HTMLVideoElement) releaseDialogVideo = observeAutoplay(element);
   }
 
   function openMedia(id: string) {
@@ -183,6 +216,7 @@ function initGallery(root: HTMLElement) {
     document.documentElement.classList.remove('media-view-open');
     clearMedia();
     activeId = '';
+    syncPreviewVideos();
     if (restore && archiveContext) {
       const context = archiveContext;
       visible = context.visible;

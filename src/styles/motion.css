@@ -1,0 +1,56 @@
+/* All visibility changes belong to GSAP. No JavaScript means no hidden content. */
+.motion-unfold {
+  transform-origin: 50% 100%;
+}
+.motion-unfold:focus-within {
+  opacity: 1 !important;
+  clip-path: none !important;
+}
+.cfw-scroll-progress {
+  position: fixed;
+  z-index: 200;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--gold-ink, #806234);
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+.motion-preference {
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 9px 0;
+  min-width: 44px;
+  min-height: 44px;
+  text-align: left;
+  text-underline-offset: 4px;
+}
+.motion-preference:hover,
+.motion-preference:focus-visible {
+  text-decoration: underline;
+}
+.motion-preference:disabled {
+  opacity: 1;
+  color: inherit;
+  cursor: default;
+}
+html[data-motion-paused="true"] .motion-unfold {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+html[data-motion-paused="true"] .cfw-scroll-progress {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-unfold {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .cfw-scroll-progress { display: none; }
+}

@@ -51,11 +51,11 @@ const time = (value?: number) => value ? `${Math.floor(value / 60)}:${String(Mat
 
   <div class="archive-grid" data-gallery-grid>
     {media.map((item, index) => <article class:list={['media-card', { 'media-card--wide': item.width / item.height > 1.3 }]} id={`media-${item.id}`} data-media-card={item.id} hidden={!!initialYear && item.year !== initialYear}>
-      <a class="media-card-link" href={url(`media/${item.id}/`)} data-open-media={item.id} aria-label={`${item.type === 'video' ? 'Přehrát film' : 'Otevřít fotografii'}: ${item.title}, ${item.year}`}>
+      <a class="media-card-link" href={url(`media/${item.id}/`)} data-open-media={item.id} aria-label={`${item.type === 'video' ? 'Otevřít film' : 'Otevřít fotografii'}: ${item.title}, ${item.year}`}>
         <div class="media-card-image">
-          <img src={url(item.thumb)} alt={item.alt || item.title} width={item.width} height={item.height} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
+          {item.type === 'video' ? <video data-gallery-preview data-video-autoplay data-video-src={url(item.src)} poster={url(item.poster || item.thumb)} muted loop playsinline preload="none" width={item.width} height={item.height} aria-hidden="true" tabindex="-1" disablepictureinpicture /> : <img src={url(item.thumb)} alt={item.alt || item.title} width={item.width} height={item.height} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />}
           <span class="media-card-fallback" hidden data-image-fallback>Obraz se nepodařilo načíst.<br />Otevřít detail <span aria-hidden="true"><Icon name="arrow-up-right" /></span></span>
-          {item.type === 'video' && <span class="media-card-film"><span aria-hidden="true"><Icon name="play" /></span> Film {time(item.duration)}</span>}
+          {item.type === 'video' && <span class="media-card-film"><span aria-hidden="true"><Icon name="film" /></span> Film {time(item.duration)}</span>}
           <span class="media-card-open" aria-hidden="true"><Icon name="expand" /></span>
         </div>
         <div class="media-card-caption"><span>{item.year} / {item.city}</span><span>{item.collection || (item.type === 'video' ? 'Film z přehlídky' : 'Czech Fashion Week')}</span></div>

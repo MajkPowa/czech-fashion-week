@@ -35,6 +35,10 @@ Kontaktní formulář otevírá předvyplněný e-mail; nevyžaduje server, neuk
 
 ## Typografie, ikony a partneři
 
+Videa na úvodu, v náhledech archivu, na profilech návrhářů i v detailu se automaticky přehrávají bez zvuku ve smyčce při vstupu do obrazovky. `src/scripts/video.ts` odkládá načtení nepoužitých zdrojů, pozastaví klipy mimo obrazovku nebo na skryté kartě a uklízí přehrávání při filtrování či zavření galerie. Rozhraní nemá tlačítka Play. Systémové omezení pohybu i přepínač v patičce zastaví automatické přehrávání a scroll animace.
+
+`src/scripts/motion.ts` řídí postupné odkrývání textů, fotografií, karet a partnerských log podle běžného scrollu. Na desktopu doplňuje jemný pohyb hero videa; na mobilu používá menší rozsahy. Obsah zůstává viditelný bez JavaScriptu a po omezení pohybu. Galerie při změně filtrů a stránkování obnovuje animace jen zobrazených karet.
+
 Produkční stránky používají jednu lokálně uloženou rodinu **Onest Variable** pod licencí OFL. Základní velikost je 17 px s řádkováním 1,65; běžný text pracuje s 16–18 px, ovládání s 14 px a podpůrné popisky s 13 px. Hlavní řezy jsou 400 a 500. Výrazný kontrast vlasových tahů a kurziva předchozí Bodoni Moda se v důležitém textu ani ovládání nepoužívají.
 
 Výběr, ověření českých znaků, licence a omezení porovnání popisuje [analýza typografie](research/TYPOGRAPHY-ANALYSIS-v3.md). Pomocná stránka [`/design-system/`](https://majkpowa.github.io/czech-fashion-week/design-system/) nabízí interaktivní porovnání Onest, Geist, Plus Jakarta Sans a předchozí kombinace Bodoni Moda + Manrope na stejných českých textech. Stránka má `noindex` a není součástí hlavní navigace.

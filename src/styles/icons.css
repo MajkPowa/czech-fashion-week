@@ -47,17 +47,13 @@
 .contact-detail p.icon-label > .cf-icon { margin-top: 3px; }
 .contact-official > .cf-icon { margin-right: 5px; }
 .benefit-number .cf-icon { --icon-size: 24px; margin-right: 10px; }
-[data-video-toggle] { display: inline-flex; align-items: center; gap: 12px; }
-[data-video-toggle] .cf-icon { --icon-size: 20px; vertical-align: middle; }
-[data-video-toggle][aria-pressed="false"] .cf-icon--pause,
-[data-video-toggle][aria-pressed="true"] .cf-icon--play { display: none; }
 .video-note { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 9px; }
 .video-note .cf-icon { --icon-size: 16px; }
 .copy-state { display: inline-flex; align-items: center; }
 #copy-email:not([data-copied="true"]) .cf-icon--check,
 #copy-email[data-copied="true"] .cf-icon--copy { display: none; }
 .menu-toggle, .media-dialog-arrow, .media-dialog-top button,
-.archive-reset, [data-reset], [data-video-toggle], #copy-email,
+.archive-reset, [data-reset], #copy-email,
 .programme-filter button { min-height: 44px; }
 .media-dialog-arrow, .media-dialog-top button { min-width: 44px; }
 @media (max-width: 760px) {
