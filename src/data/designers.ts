@@ -26,84 +26,84 @@ export const officialDesignerPortraits: Record<string, DesignerPortrait> = {
     "src": "official/designers/osmany-laffita.webp",
     "width": 800,
     "height": 800,
-    "alt": "Osmany Laffita – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Osmany Laffita – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Osmany.png"
   },
   "cleofe-finati": {
     "src": "official/designers/cleofe-finati.webp",
     "width": 800,
     "height": 800,
-    "alt": "Cleofe Finati – oficiální snímek pánské kolekce z webu CFW",
+    "alt": "Cleofe Finati – pánská kolekce Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/07/Cleofe-Finati-czech-fashion-week.png"
   },
   "jitka-klett": {
     "src": "official/designers/jitka-klett.webp",
     "width": 800,
     "height": 800,
-    "alt": "Jitka Klett – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Jitka Klett – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Jitka-Klett.png"
   },
   "jiri-moravec": {
     "src": "official/designers/jiri-moravec.webp",
     "width": 800,
     "height": 800,
-    "alt": "Jiří Moravec – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Jiří Moravec – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_JIRI_MORAVEC.png"
   },
   "ludek-hanak": {
     "src": "official/designers/ludek-hanak.webp",
     "width": 500,
     "height": 500,
-    "alt": "Luděk Hanák – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Luděk Hanák – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2024/07/ludek-hana.png"
   },
   "jirina-matousova": {
     "src": "official/designers/jirina-matousova.webp",
     "width": 800,
     "height": 800,
-    "alt": "Jiřina Matoušová – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Jiřina Matoušová – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_JIRINA_MATOUSOVA.png"
   },
   "helena-bedrnova": {
     "src": "official/designers/helena-bedrnova.webp",
     "width": 800,
     "height": 800,
-    "alt": "Helena Bedrnová – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Helena Bedrnová – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/CFW_Helena_Bedrnova.png"
   },
   "nada-moravcova": {
     "src": "official/designers/nada-moravcova.webp",
     "width": 800,
     "height": 800,
-    "alt": "Naďa Moravcová – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Naďa Moravcová – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_NADA_MORAVCOVA.png"
   },
   "gabriela-giotto": {
     "src": "official/designers/gabriela-giotto.webp",
     "width": 800,
     "height": 800,
-    "alt": "Gabriela Giotto – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Gabriela Giotto – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/BANNER_CFW_GABRIELA_GIOTTO.png"
   },
   "lilian-augustin": {
     "src": "official/designers/lilian-augustin.webp",
     "width": 800,
     "height": 800,
-    "alt": "Lilian Augustin – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Lilian Augustin – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Lilian_Augustin.png"
   },
   "anna-anna": {
     "src": "official/designers/anna-anna.webp",
     "width": 800,
     "height": 800,
-    "alt": "Anna Anna – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Anna Anna – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/08/CFW_Anna_Anna.png"
   },
   "debbie-brown": {
     "src": "official/designers/debbie-brown.webp",
     "width": 500,
     "height": 500,
-    "alt": "Debbie Brown – oficiální fotografie z přehledu návrhářů CFW",
+    "alt": "Debbie Brown – Czech Fashion Week",
     "sourceUrl": "https://cfw.cz/wp-content/uploads/2025/05/DEBBIE_BROWN.png"
   }
 };
@@ -133,7 +133,7 @@ const catalogue: Designer[] = [
   {
     slug: 'ludek-hanak', name: 'Luděk Hanák', category: 'Společenské kolekce',
     bio: 'Od výrazného lesku po lehkost dlouhých šatů: archiv ukazuje různorodé podoby společenské kolekce.',
-    description: 'Tvorba Luďka Hanáka je v dodaném archivu zastoupena napříč třemi ročníky. Propojené fotografie a videa umožňují sledovat jednotlivé siluety i jejich pohyb na mole.',
+    description: 'Tvorba Luďka Hanáka je v archivu Czech Fashion Week zastoupena napříč třemi ročníky. Propojené fotografie a videa umožňují sledovat jednotlivé siluety i jejich pohyb na mole.',
     years: [2022, 2023, 2024], collections: ['Luděk Hanák'], collectionMatchers: ['luděk hanák', 'ludek hanak', 'ludekhanak'],
     source: 'Prezentace CFW 2025; alba Teplice 2022, Teplice 2023 a Brno 2024.', sourceUrl: 'https://cfw.cz/',
   },
@@ -183,8 +183,8 @@ const catalogue: Designer[] = [
     "slug": "jirina-matousova",
     "name": "Jiřina Matoušová",
     "category": "Autorská móda",
-    "bio": "Jiřina Matoušová patří k osobnostem představeným v oficiálním přehledu návrhářů Czech Fashion Week.",
-    "description": "Osobnost módní tvorby prezentovaná na oficiálním webu CFW. Kolekce a potvrzenou účast u konkrétních událostí představuje jejich program.",
+    "bio": "Jiřina Matoušová patří k tvůrkyním Czech Fashion Week.",
+    "description": "Kolekce a aktuální účast na přehlídkách uvádíme u jednotlivých událostí v programu Czech Fashion Week.",
     "years": [],
     "collections": [],
     "collectionMatchers": [],
@@ -195,8 +195,8 @@ const catalogue: Designer[] = [
     "slug": "lilian-augustin",
     "name": "Lilian Augustin",
     "category": "Autorská móda",
-    "bio": "Lilian Augustin patří k osobnostem představeným v oficiálním přehledu návrhářů Czech Fashion Week.",
-    "description": "Osobnost módní tvorby prezentovaná na oficiálním webu CFW. Kolekce a potvrzenou účast u konkrétních událostí představuje jejich program.",
+    "bio": "Lilian Augustin patří k tvůrkyním Czech Fashion Week.",
+    "description": "Kolekce a aktuální účast na přehlídkách uvádíme u jednotlivých událostí v programu Czech Fashion Week.",
     "years": [],
     "collections": [],
     "collectionMatchers": [],
@@ -207,8 +207,8 @@ const catalogue: Designer[] = [
     "slug": "debbie-brown",
     "name": "Debbie Brown",
     "category": "Autorská móda",
-    "bio": "Debbie Brown patří k osobnostem představeným v oficiálním přehledu návrhářů Czech Fashion Week.",
-    "description": "Osobnost módní tvorby prezentovaná na oficiálním webu CFW. Kolekce a potvrzenou účast u konkrétních událostí představuje jejich program.",
+    "bio": "Debbie Brown patří k tvůrkyním Czech Fashion Week.",
+    "description": "Kolekce a aktuální účast na přehlídkách uvádíme u jednotlivých událostí v programu Czech Fashion Week.",
     "years": [],
     "collections": [],
     "collectionMatchers": [],

@@ -19,9 +19,9 @@ const collection = archiveHero?.collection;
     <nav class="breadcrumb" aria-label="Drobečková navigace" style="padding-top:35px"><a href={url('navrhari/')}>Návrháři</a><span>/</span><span>{designer.name}</span></nav>
     <div class="designer-profile">
       <div class="image-frame" style={designer.portrait ? 'aspect-ratio:1' : undefined}>{image && <img src={url(image.src)} alt={image.alt} width={image.width} height={image.height} loading="eager" />}</div>
-      <div><p class="eyebrow">{designer.category}</p><h1>{designer.name}</h1><p class="section-intro">{designer.bio}</p><p class="profile-description">{designer.description}</p>{designer.years.length > 0 && <p class="years">Doložené ročníky / {designer.years.join(' · ')}</p>}{collection && <a class="text-link" href={url(`archiv/?collection=${encodeURIComponent(collection)}`)}>Vstoupit do kolekcí <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}</div>
+      <div><p class="eyebrow">{designer.category}</p><h1>{designer.name}</h1><p class="section-intro">{designer.bio}</p><p class="profile-description">{designer.description}</p>{designer.years.length > 0 && <p class="years">Ročníky v archivu / {designer.years.join(' · ')}</p>}{collection && <a class="text-link" href={url(`archiv/?collection=${encodeURIComponent(collection)}`)}>Vstoupit do kolekcí <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}</div>
     </div>
-    {designer.portrait ? <p class="image-caption">Fotografie z <a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">oficiálního přehledu návrhářů CFW</a>.</p> : archiveHero && <p class="image-caption">Archivní fotografie kolekce / {archiveHero.city} / {archiveHero.year}<span>{archiveHero.credit}</span></p>}
+    {designer.portrait ? <p class="image-caption">Fotografie Czech Fashion Week.</p> : archiveHero && <p class="image-caption">Archivní fotografie kolekce / {archiveHero.city} / {archiveHero.year}<span>{archiveHero.credit}</span></p>}
   </section>
   {gallery.length > 0 && <section class="section container">
     <div class="section-heading"><div><p class="eyebrow">Vybrané momenty</p><h2 class="section-title">Tvorba v obraze.</h2></div><p class="section-intro">Fotografie a záznamy z jednotlivých ročníků. Otevřete detail a objevte celý přehlídkový kontext.</p></div>

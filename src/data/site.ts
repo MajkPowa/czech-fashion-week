@@ -90,7 +90,7 @@ export const charityProjects = [
     year: 2023,
     title: 'Móda a pomoc v Teplicích',
     beneficiary: 'Teplická nemocnice',
-    description: 'Prezentace Czech Fashion Week připomíná podporu teplické nemocnice v roce 2023. Charitativní rozměr tak doplňuje kulturní a společenský program projektu.',
+    description: 'V roce 2023 Czech Fashion Week podpořil teplickou nemocnici. Charitativní rozměr tak doplnil kulturní a společenský program přehlídky.',
     source: 'CFW 2025_Prezentace.pdf, strana 6',
   },
   {
@@ -98,7 +98,7 @@ export const charityProjects = [
     year: 2024,
     title: 'Společná podpora',
     beneficiary: 'Nemocnice a BJP Foundation',
-    description: 'V roce 2024 projekt podle své prezentace navázal podporou nemocnice a BJP Foundation. Jde o historicky doloženou část aktivit, nikoli o aktuálně vyhlášenou sbírku.',
+    description: 'V roce 2024 Czech Fashion Week navázal podporou nemocnice a BJP Foundation. Společná pomoc byla součástí aktivit tohoto ročníku.',
     source: 'CFW 2025_Prezentace.pdf, strana 6',
   },
 ] as const;

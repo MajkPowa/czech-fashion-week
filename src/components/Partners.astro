@@ -21,7 +21,7 @@ const historicalGroups = [
   <div class="container">
     <header class="partners-heading reveal">
       <div><p class="eyebrow">Síla spolupráce</p><h2 id="partners-heading">Za módou stojí<br /><em>silná spojení.</em></h2></div>
-      <p>Partneři akcí uvedení na oficiálním webu Czech Fashion Week. Původní loga a jejich rozdělení přebíráme přímo od pořadatele.</p>
+      <p>Děkujeme partnerům, kteří s námi vytvářejí Czech Fashion Week. Jejich podpora propojuje módu, kulturu a osobní setkávání.</p>
     </header>
     {groups.map((group, index) => <div class:list={['partner-group', `partner-group--${group.type}`]} aria-labelledby={group.id}>
       <div class="partner-group-heading"><h3 id={group.id}>{group.label}</h3><span aria-hidden="true">0{index + 1} / {String(group.items.length).padStart(2, '0')}</span></div>
@@ -34,11 +34,11 @@ const historicalGroups = [
         </figure>)}
       </div>
     </div>)}
-    <p class="partner-source-note">Podle <a href="https://cfw.cz/" target="_blank" rel="noopener noreferrer">partnerského přehledu pořadatele</a> ze dne 20. 10. 2026. Zastoupení značky nevyjadřuje automaticky partnerství u každé jednotlivé události.</p>
+    <p class="partner-source-note">Přehled partnerů akcí Czech Fashion Week. Partnerství se může lišit podle konkrétní události.</p>
     <details class="partner-history">
       <summary><span>Partneři a záštity předchozích ročníků</span><span class="partner-panels-toggle" aria-hidden="true"><Icon name="plus" /><Icon name="minus" /></span></summary>
       <div class="partner-history-content">
-        <p class="partner-source-note">Úplný historický přehled z prezentace CFW 2025: 35 partnerských značek a 8 záštit. Zachováváme původní zdrojové varianty log i partnerské panely z roku 2024.</p>
+        <p class="partner-source-note">Partneři a záštity předchozích ročníků: 35 partnerských značek a 8 záštit. Historické partnerské panely připomínají realizace z roku 2024.</p>
         {historicalGroups.map((group, index) => <div class:list={['partner-group', `partner-group--${group.type}`]} aria-labelledby={group.id}>
           <div class="partner-group-heading"><h3 id={group.id}>{group.label}</h3><span aria-hidden="true">0{index + 1} / {String(group.items.length).padStart(2, '0')}</span></div>
           <div class="partner-grid">

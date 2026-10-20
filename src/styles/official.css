@@ -6,6 +6,4 @@
 .personal-note-signature { margin-top: 32px; border-top: 1px solid var(--line); padding-top: 24px; }
 .personal-note-signature strong { display: block; font-size: clamp(24px, 2.4vw, 34px); font-weight: 500; letter-spacing: -.025em; }
 .personal-note-signature span { display: block; font-size: 14px; margin-top: 6px; }
-.personal-note-source { display: inline-flex; gap: 12px; align-items: center; font-size: 13px; color: var(--muted); margin-top: 25px; text-decoration: underline; text-underline-offset: 4px; }
-.personal-note-source .cf-icon { --icon-size: 16px; }
 @media (max-width: 760px) { .personal-note { grid-template-columns: minmax(0, 1fr); gap: 35px; } .personal-note-portrait { max-width: 430px; margin-inline: auto; } .personal-note-copy h2 { font-size: clamp(36px, 9vw, 54px); } }

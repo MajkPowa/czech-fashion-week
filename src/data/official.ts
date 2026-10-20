@@ -19,7 +19,8 @@ export const personalNote = {
   sourceUrl: 'https://cfw.cz/',
   portraitSourceUrl: 'https://cfw.cz/wp-content/uploads/2024/07/61caa678-6e1c-4018-9b2e-8da5cb320672.jpg',
   paragraphs: [
-    'Jiří Morštadt ve svém osobním slově děkuje partnerům, návrhářům i návštěvníkům za podporu Czech Fashion Week a zve je k další spolupráci.',
-    'CFW představuje jako setkání módy a designu s charitativním přesahem. Projekt podporuje kulturní život v Česku a na Slovensku; produkční tým chce dál pečovat o spokojenost všech, kdo jsou jeho součástí.',
+    'Vážení přátelé módy, designu a příznivci charitativního projektu Czech Fashion Week, děkujeme vám za přízeň a těšíme se na spolupráci s vámi ať již jako partnerem, návrhářem či divákem.',
+    'Czech Fashion Week je nejen skutečným svátkem módy a designu, ale zároveň charitativním projektem podporujícím různými formami kulturní život v České a Slovenské republice na mnoha úrovních.',
+    'Jsme i nadále připraveni spolu s celým produkčním týmem pro vaši spokojenost učinit maximum.',
   ],
 };
