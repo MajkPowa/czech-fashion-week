@@ -1,10 +1,10 @@
 # Produkční doména cfw.cz
 
-Ověřeno 20. října 2026. Hlavní adresa je `https://cfw.cz/`, varianta `www.cfw.cz` má směřovat na tentýž web a GitHub Pages ji přesměruje na hlavní doménu.
+Ověřeno 21. října 2026. Web běží na hlavní adrese `https://cfw.cz/`. GitHub Pages přesměrovává `www.cfw.cz` i nezabezpečené HTTP na tuto adresu.
 
-## DNS pro majitele domény
+## Nastavené DNS
 
-DNS nyní spravují nameservery WEDOS. Nastavit TTL **300 sekund** pro všechny níže uvedené záznamy. `@` znamená samotnou doménu `cfw.cz`.
+DNS spravují nameservery WEDOS. Veřejné A/AAAA záznamy pro `cfw.cz` a CNAME pro `www.cfw.cz` odpovídají níže uvedené tabulce. Při předání DNS bylo doporučeno TTL **300 sekund**. `@` znamená samotnou doménu `cfw.cz`.
 
 | Typ | Název | Hodnota |
 | --- | --- | --- |
@@ -18,9 +18,9 @@ DNS nyní spravují nameservery WEDOS. Nastavit TTL **300 sekund** pro všechny 
 | AAAA | @ | 2606:50c0:8003::153 |
 | CNAME | www | majkpowa.github.io. |
 
-Nahradit současný A záznam pro `cfw.cz` s hodnotou `46.28.105.110`. Odstranit současný A záznam pro `www.cfw.cz` se stejnou IP a nahradit jej uvedeným CNAME. U `www` nesmí současně existovat A a CNAME. Záznam CNAME neobsahuje protokol ani cestu `/czech-fashion-week/`.
+Původní A záznamy pro `cfw.cz` a `www.cfw.cz` s hodnotou `46.28.105.110` byly nahrazeny uvedenou konfigurací GitHub Pages. U `www` nesmí současně existovat A a CNAME. Záznam CNAME neobsahuje protokol ani cestu `/czech-fashion-week/`.
 
-**Zachovat nameservery, MX, TXT/SPF/DKIM/DMARC a všechny poštovní subdomény.** Jde pouze o přesměrování webu; poštovní služby se nestěhují. Stávající MX cíle jsou `wes1-mx1.wedos.net` a `wes1-mx2.wedos.net` s prioritou 1 a `wes1-mx-backup.wedos.net` s prioritou 10. Pro apex ani www při kontrole nebyl AAAA; žádný CAA záznam nebyl nalezen.
+**Zachovat nameservery, MX, TXT/SPF/DKIM/DMARC a všechny poštovní subdomény.** Změna se týká webu; poštovní služby se nestěhují. MX zůstávají u WEDOS: `wes1-mx1.wedos.net` a `wes1-mx2.wedos.net` s prioritou 1 a `wes1-mx-backup.wedos.net` s prioritou 10. Při původní kontrole 20. října nebyl pro apex ani www AAAA; nyní apex používá čtyři IPv6 adresy GitHub Pages v tabulce. Kontrola GitHub Pages nehlásí chybu CAA.
 
 ## Nastavení webu
 
@@ -30,15 +30,17 @@ Nahradit současný A záznam pro `cfw.cz` s hodnotou `46.28.105.110`. Odstranit
 - Zachované staré adresy `/praha/`, `/brno/`, `/marianske_lazne/`, `/KV2025/`, `/historie/` a stará úvodní cesta `/czech-fashion-week/` mají statická HTML přesměrování na nové stránky. GitHub Pages zde nepodporuje vlastní serverové 301; Astro vytváří meta-refresh s canonical odkazem.
 - Ověřeno sestavení 370 obsahových stránek a 6 přesměrování; 17 400 lokálních referencí bez chybějících cílů. Prohlížeč ověřil přehrávání hero videa, starou adresu Praha a filtr/otevření galerie s novými cestami.
 
-## Dokončení po změně DNS
+## Dokončené nasazení
 
-Při přípravě stále veřejné DNS ukazovalo na původní hosting. Nový web proto dosud neběžel na veřejné doméně cfw.cz. GitHub Pages při nastavení nové domény dočasně vypnul `https_enforced`, protože certifikát pro ni zatím není připraven.
+Přepnutí na GitHub Pages bylo dokončeno 21. října 2026. Veřejné DNS odpovídá tabulce a kontrola GitHub Pages potvrzuje platnou konfiguraci domény.
 
-Po změně DNS:
+Ověřený stav:
 
-1. Ověřit všechny A/AAAA pro cfw.cz a CNAME www proti tabulce a zelenou kontrolu DNS na GitHub Pages.
-2. Po vystavení certifikátu GitHub Pages zapnout **Enforce HTTPS** v nastavení repozitáře; lze také `gh api --method PUT repos/MajkPowa/czech-fashion-week/pages -F https_enforced=true`.
-3. Ověřit HTTPS na cfw.cz, přesměrování www, média, program a nákupní odkazy. Do té doby neoznačovat přepnutí domény za dokončené. Propagace DNS a zpřístupnění HTTPS může podle GitHubu trvat až 24 hodin.
+- GitHub Pages vystavil certifikát pro `cfw.cz` a `www.cfw.cz`; API hlásí stav `approved`.
+- **Enforce HTTPS** je zapnuté (`https_enforced: true`).
+- `https://cfw.cz/program/praha-glamour-2026/` vrací **200 OK** při běžném ověření TLS certifikátu.
+- `http://cfw.cz/` vrací **301** na `https://cfw.cz/`.
+- `https://www.cfw.cz/` vrací **301** na `https://cfw.cz/`.
 
 Původní hosting není nutné rušit kvůli změně DNS; jeho poštovní služby a případnou zálohu původního WordPressu ponechat.
 
