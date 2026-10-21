@@ -147,7 +147,7 @@ const catalogue: Designer[] = [
   {
     slug: 'fashion-island', name: 'Fashion Island', category: 'Resort fashion',
     bio: 'Lehkost, letní atmosféra a resort kolekce zachycené v Teplicích, Karlových Varech i Brně.',
-    description: 'Fashion Island je v archivu zastoupený plavkovými a resort kolekcemi. Aktuální pražská událost 2026 uvádí premiéru Fashion Island SS27 pod vedením Liliany Augustinové a její sestry Lucie.',
+    description: 'Fashion Island představí na CFW Glamour v Praze premiéru kolekce SS27, jejíž koncept vzniká pod vedením Liliany Augustinové a její sestry Lucie. Vedle vlastních návrhů nabídne také výběr modelů zahraničních návrhářů. Večer doplní exkluzivní kolekce LYANIS Couture.',
     years: [2022, 2023, 2024], collections: ['Fashion Island'], collectionMatchers: ['fashion island'],
     source: 'Prezentace CFW 2025 a zdrojová alba; aktuální Praha 2026 podle oficiálního pořadatele.', sourceUrl: 'https://cfw.cz/praha/',
   },
@@ -195,7 +195,7 @@ const catalogue: Designer[] = [
     "slug": "lilian-augustin",
     "name": "Lilian Augustin",
     "category": "Autorská móda",
-    "bio": "Lilian Augustin patří k tvůrkyním Czech Fashion Week.",
+    "bio": "Liliana Augustinová stojí společně se svou sestrou Lucií za konceptem kolekce Fashion Island SS27.",
     "description": "Kolekce a aktuální účast na přehlídkách uvádíme u jednotlivých událostí v programu Czech Fashion Week.",
     "years": [],
     "collections": [],

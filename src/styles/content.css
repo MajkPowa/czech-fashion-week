@@ -12,3 +12,8 @@
 .contact-purchase{margin-top:20px}
 .contact-purchase .ticket-provider{margin-top:8px}
 @media(max-width:760px){.event-header-purchase{align-items:flex-start;flex-direction:column;gap:12px}}
+
+.event-detail-subtitle{font-size:clamp(18px,2.2vw,28px);line-height:1.5;margin-top:20px;max-width:60ch}
+.event-story-copy{margin-top:28px}
+.event-story-copy p{font-size:17px;line-height:1.8;color:var(--muted)}
+.event-story-copy p+p{margin-top:24px}

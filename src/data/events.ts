@@ -14,6 +14,7 @@ export interface Event {
   id: string;
   slug: string;
   title: string;
+  subtitle?: string;
   city: string;
   year: number | null;
   date: string | null;
@@ -22,11 +23,13 @@ export interface Event {
   venue: string | null;
   status: EventStatus;
   description: string;
+  paragraphs?: string[];
   designers: string[];
   sourceUrl: string | null;
   ticketUrl?: string;
   ticketProvider?: string;
   time?: string;
+  doorsTime?: string;
   address?: string;
   dressCode?: string;
   practicalInfo?: string[];
@@ -42,20 +45,28 @@ export const events: Event[] = [
   {
     id: 'praha-glamour-2026', slug: 'praha-glamour-2026',
     title: 'Czech Fashion Week Glamour', city: 'Praha', year: 2026,
+    subtitle: 'Fashion Island by Liliana Augustinová',
     date: '2026-11-20T20:00:00+01:00', dateLabel: '20. listopadu 2026',
     venue: 'PVA EXPO Praha Letňany · Hala 1', status: 'confirmed',
-    description: 'Pražský večer představí Fashion Island SS27 a LYANIS Couture. Resort fashion a couture doplní hudební a společenský program.',
-    designers: ['fashion-island'], sourceUrl: 'https://cfw.cz/praha/',
+    description: 'Staňte se součástí premiéry kolekce Fashion Island SS27 a prožijte večer, ve kterém se setkávají móda, umění a společenská prestiž.',
+    paragraphs: [
+      'Pojďte s námi zažít jedinečné propojení světa módy, elegance a umění. Czech Fashion Week Glamour nabídne 20. listopadu 2026 na výstavišti PVA EXPO PRAHA přehlídku nejnovějších módních trendů, výjimečných kolekcí a originální návrhářské tvorby.',
+      'Zlatým hřebem večera bude premiéra kolekce Fashion Island SS27, jejíž koncept vzniká pod vedením Liliany Augustinové a její sestry Lucie, společně s exkluzivní kolekcí LYANIS Couture. Vedle vlastních návrhů představí Fashion Island také pečlivě vybrané modely zahraničních návrhářů, které spojuje precizní zpracování, kvalitní materiály a nadčasová elegance.',
+      'Návštěvníci se mohou těšit na sofistikovanou módní show plnou ženskosti, resort fashion a couture modelů, které na mole představí přední české i zahraniční modelky. Večer doplní hudební a umělecká vystoupení i účast výrazných osobností českého modelingu a královen krásy, mezi nimiž nebudou chybět Aneta Vignerová, Natálie Kočendová, Nikol Švantnerová, Tereza Budková, Justýna Zedníková, Karolina Kokešová (vítězka Miss Global), Lucie Pisková (vítězka Miss Czech Republic) a Viktoria Güllová (Miss Universe Slovakia).',
+      'Czech Fashion Week Glamour tak slibuje výjimečný společensko-kulturní zážitek, který propojí současnou módní scénu, kreativitu a nezaměnitelnou atmosféru prestižní módní události.',
+    ],
+    designers: ['fashion-island', 'lilian-augustin'], sourceUrl: 'https://cfw.cz/praha/',
     ticketUrl: 'https://www.ticketportal.cz/event/Czech-Fashion-Week-GLAMOUR#vstupenky',
     ticketProvider: 'Ticketportal',
-    time: '20:00', address: 'Beranových 667, Praha 9–Letňany', dressCode: 'Cocktail Chic',
+    time: '20:00', doorsTime: '19:00', address: 'Beranových 667, Praha 9–Letňany', dressCode: 'Cocktail Chic',
     practicalInfo: [
       'Začátek přehlídky je ve 20:00.',
       'Vstupenky a jejich aktuální dostupnost zajišťuje Ticketportal.',
       'Vstup do areálu od 19:00. Organizační pokyny si před návštěvou ověřte na vstupence.',
     ],
     programme: [
-      { time: '20:00', title: 'Czech Fashion Week Glamour', description: 'Fashion Island SS27 a LYANIS Couture.' },
+      { time: '19:00', title: 'Otevření areálu', description: 'Příchod hostů do PVA EXPO Praha Letňany.' },
+      { time: '20:00', title: 'Začátek programu', description: 'Premiéra Fashion Island SS27 a exkluzivní kolekce LYANIS Couture. Módní show doplní hudební a umělecká vystoupení.' },
       { time: 'Po přehlídce', title: 'Společenská část', description: 'Navazující společenský a hudební program.' },
     ],
     archiveYear: 2024, archiveCity: 'Brno',

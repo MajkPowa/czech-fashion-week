@@ -36,4 +36,6 @@ Charitativní projekty jsou ukotvené v roce a výslovně historické. Žádné 
 
 ## Datum a publikace
 
+Text CFW Glamour doplněný provozovatelem 21. října 2026: pozvání a všechny čtyři odstavce jsou zveřejněné v detailu Praha 2026. Podklad potvrzuje Fashion Island SS27 pod vedením Liliany Augustinové a její sestry Lucie, LYANIS Couture, osm jmen modelek, vstup v 19:00 a začátek programu ve 20:00. Zastaralý mezititulek „Czech Fashion Week 2025“ je sjednocený s uvedeným termínem na rok 2026; historické ročníky se nemění. Jméno sestry Lucie není doplněné neověřeným příjmením.
+
 Stavy událostí se musí před případným pozdějším vydáním znovu zkontrolovat vůči dnešnímu datu. Ve statickém webu je stav `confirmed` podložený ověřením 20. 10. 2026, nikoli automatickou zárukou budoucí aktuálnosti. Pro hlavní CTA používat vždy stav události a ověřené ticket URL. Historické fotografie u aktuálního programu mají jasný archivní popisek.
